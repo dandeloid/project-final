@@ -14,12 +14,13 @@ const HomeScreen = () => {
             },
         }
 
-        fetch(('https://a-book-api-2.herokuapp.com/books'), options)
+        fetch(("http://localhost:3003/api/products"), options)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data)
             })
     }, [])
+    console.log("data", data)
     console.log("test", products) ///<<<<< NEEED TO GET FETCH TO SHOW
 
     return (
