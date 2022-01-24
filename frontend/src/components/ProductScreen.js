@@ -1,12 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import Rating from './Rating'
-import data from '../data'
+import Loading from './Loading'
+//import data from '../data'
 
 const ProductScreen = () => {
     const { id } = useParams()
-    const product = data.products.find((p) => p._id === String(id))
+    // const product = products.find((p) => p._id === String(id))
+
+    const [product, setProduct] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+        setLoading(true)
+        fetch((`http://localhost:3003/api/products/${id}`), options)           
+            .then((res) => res.json())
+            .then((data) => setProduct(data))
+            .finally(() => setLoading(false))
+    }, [])
+
+    console.log("product", product)
+    console.log("id", id)
+
 
     if (!product) {
         return (

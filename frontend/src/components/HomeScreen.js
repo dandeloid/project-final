@@ -1,10 +1,11 @@
 import React, {useEffect, useState } from 'react'
 import Product from './Product'
-import data from '../data.js' 
+import Loading from './Loading' 
 
 const HomeScreen = () => {
 
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const options = {
@@ -13,22 +14,25 @@ const HomeScreen = () => {
                 'Content-Type': 'application/json',
             },
         }
-
-        fetch(("http://localhost:3003/api/products"), options)
+        setLoading(true)
+        fetch(("http://localhost:3003/api/products"), options)           
             .then((res) => res.json())
-            .then((data) => {
-                setProducts(data)
-            })
+            .then((data) => setProducts(data))
+            .finally(() => setLoading(false))
     }, [])
-    console.log("data", data)
-    console.log("test", products) ///<<<<< NEEED TO GET FETCH TO SHOW
 
     return (
-        <div className="row center">
-            {data.products.map(product => (
-                <Product key={product._id} product={product} />
-            ))}
-        </div>    
+        <div>
+            {loading  ? (
+               <Loading/> 
+            ) : (
+                <div className="row center">       
+                    {products.map(product => (
+                        <Product key={product._id} product={product} />
+                    ))}
+                </div>  
+            )}
+        </div>
     )
 }
 
