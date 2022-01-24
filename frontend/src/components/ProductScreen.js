@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import Rating from './Rating'
-import Loading from './Loading'
+//import Loading from './Loading'
 //import data from '../data'
 
 const ProductScreen = () => {
@@ -23,11 +23,10 @@ const ProductScreen = () => {
         fetch((`http://localhost:3003/api/products/${id}`), options)           
             .then((res) => res.json())
             .then((data) => setProduct(data))
-            .finally(() => setLoading(false))
-    }, [])
+            .finally(() => setLoading(false))   
+    }, [id])
 
-    console.log("product", product)
-    console.log("id", id)
+
 
 
     if (!product) {
