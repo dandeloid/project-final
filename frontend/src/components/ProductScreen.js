@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import Rating from './Rating'
 //import Loading from './Loading'
-//import data from '../data'
+
+import { showProduct } from "../reducers/shop"
+import { useSelector, useDispatch } from 'react-redux'
 
 const ProductScreen = () => {
     const { id } = useParams()
+    const product = useSelector((store) => store.shop.item)
+    const dispatch = useDispatch()
     // const product = products.find((p) => p._id === String(id))
 
-    const [product, setProduct] = useState([])
-    const [loading, setLoading] = useState(false)
-
     useEffect(() => {
-        const options = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-        setLoading(true)
-        fetch((`http://localhost:3003/api/products/${id}`), options)           
-            .then((res) => res.json())
-            .then((data) => setProduct(data))
-            .finally(() => setLoading(false))   
-    }, [id])
-
-
-
+        dispatch(showProduct(id))
+    }, [dispatch, id])
 
     if (!product) {
         return (
@@ -38,7 +26,7 @@ const ProductScreen = () => {
     }
      return (
         <div> 
-            <Link to="/">Back</Link>
+            <Link className="back-button" to="/">Back</Link>
             <div className="row top"> 
                 <div className="column-2">  
                     <img className="large" src={process.env.PUBLIC_URL + product.image} alt={product.name} /> 
@@ -47,6 +35,8 @@ const ProductScreen = () => {
                     <ul>
                         <li>
                             <h1>{product.name}</h1>
+                            <p>{product.title}</p>
+                            <p>Label: {product.brand}</p>
                         </li>
                         <li>
                             <Rating rating={product.rating} nrRating={product.nrRating} />

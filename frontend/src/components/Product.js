@@ -11,9 +11,10 @@ const Product = (props) => {
         <div className="card-body">
           <a href={`/product/${product._id}`}>
             <h2>{product.name}</h2>
+            <p>{product.title}</p>
           </a>
           <Rating rating={product.rating} nrRating={product.nrRating} />
-          <div className="price">${product.price}</div>
+          <div className="price">{product.price} SEK</div>
         </div>
       </div>
     )

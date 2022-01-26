@@ -27,7 +27,7 @@ body {
 }
 header {
   grid-area: header;
-  background-color: lightslategray;
+  background-color: black;
 }
 main {
   grid-area: main;
@@ -35,7 +35,7 @@ main {
 }
 footer {
   grid-area: footer;
-  background-color: lightslategray;
+  background-color: black;
   color: white;
 }
 
@@ -57,9 +57,10 @@ h2 {
 }
 a {
   text-decoration: none;
+  color: white;
 }
 a:hover {
-  color: red;
+  color: lightblue;
 }
 ul {
   padding: 0;
@@ -71,23 +72,25 @@ li {
 }
 button {
   padding: 1rem;
-  border-radius: 0.5rem;
-  border: 0.1rem grey solid;
+  border: 0.1rem black solid;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: lightgrey;
+  background-color: white;
   cursor: pointer;
 }
 button:hover {
-  border: 0.1rem black solid;
+  border: 0.2rem white solid;
 }
 button.primary {
-  background-color: gold;
+  background-color: white;
 }
 button.block {
   width: 100%;
+}
+.back-button {
+  color: black;
 }
 
 /* HEAD */
@@ -114,26 +117,26 @@ a.brand {
 }
 
 /* IMAGES */
-img {
+/* img {
   border-radius: 0.5rem;
-}
+} */
 img.medium {
   max-width: 29rem;
   width: 100%;
 }
 img.large {
-  width: 100%;
+  width: 60%;
 }
 
 /* CARD */
 .card {
-  border: 0.1rem lightgray solid;
-  background-color: lightsteelblue;
-  border-radius: 0.5rem;
+  border: 0.1rem black solid;
+  background-color: black;
   margin: 1rem;
 }
 .card-body {
   padding: 1rem;
+  color: white;
 }
 .card-body > * {
   margin-bottom: 0.5rem;
@@ -146,11 +149,10 @@ img.large {
 /* RATING */
 .rating span {
   color: gold;
-  /* margin: 0.1rem; */
 }
 
 .rating span:last-child {
-  color: black;
+  color: white;
 }
 
 /* ACTIVE / INACTIVE */

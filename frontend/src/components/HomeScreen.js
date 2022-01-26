@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react'
+import React, {useEffect} from 'react'
 import Product from './Product'
 //import Loading from './Loading' 
 
@@ -7,11 +7,10 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
-    const products = useSelector((store) => store.shop.items);
-    console.log("products", products)
+    const products = useSelector((store) => store.shop.items)
    
     useEffect(() => {
-            dispatch(showShop())
+        dispatch(showShop())
     }, [dispatch])
 
     return (
