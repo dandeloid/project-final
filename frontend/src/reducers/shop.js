@@ -23,6 +23,7 @@ export const shop = createSlice({
 	},
 });
 
+// Full products
 export const showShop = () => {
 	return (dispatch) => {
 		
@@ -32,20 +33,24 @@ export const showShop = () => {
                 'Content-Type': 'application/json',
             },
 		};
-		fetch('http://localhost:3003/api/products', options)
+		dispatch(shop.actions.setLoading(true))
+		fetch('http://localhost:3003/api/products', options)		
 			.then((res) => res.json())
 			.then((data) => {
 				if (data) {
 					dispatch(shop.actions.setItems(data))
 					dispatch(shop.actions.setError(null))
+					dispatch(shop.actions.setLoading(false))
 				} else {
 					dispatch(shop.actions.setError(data))
+					dispatch(shop.actions.setLoading(false))
 				}
 			})
 			
 	};
 };
 
+//Single product
 export const showProduct = (id) => {
 	return (dispatch) => {
 		
@@ -55,14 +60,17 @@ export const showProduct = (id) => {
                 'Content-Type': 'application/json',
             },
 		};
+		dispatch(shop.actions.setLoading(true))
 		fetch(`http://localhost:3003/api/products/${id}`, options)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data) {
 					dispatch(shop.actions.setItem(data))
 					dispatch(shop.actions.setError(null))
+					dispatch(shop.actions.setLoading(false))
 				} else {
 					dispatch(shop.actions.setError(data))
+					dispatch(shop.actions.setLoading(false))
 				}
 			})
 			

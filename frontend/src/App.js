@@ -5,8 +5,11 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 import { shop } from './reducers/shop'
 
+import Header from './components/Header'
+import Footer from './components/Footer'
 import ProductScreen from './components/ProductScreen'
 import HomeScreen from './components/HomeScreen'
+import CartScreen from './screens/CartScreen'
 import NotFound from './components/NotFound'
 
 ////////////////
@@ -22,23 +25,14 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter> 
         <div className="grid-container">
-          <header className="row">
-            <div>
-              <a className="brand" href="/">The Design Shop</a>
-            </div>
-            <div>
-              <a href="/Cart">Cart</a>
-              <a href="/Contact">Contact</a>
-            </div>
-          </header>
-          <main>
+          <Header />
             <Routes>
               <Route exact path="/" element={<HomeScreen />} />
               <Route path="/product/:id" element={<ProductScreen />} />
+              <Route path="/cart/:id" element={<CartScreen />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </main>
-          <footer className="row center">Daniel & Pinar</footer>
+          <Footer />
         </div>
       </BrowserRouter>
     </Provider> 
