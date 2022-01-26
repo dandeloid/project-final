@@ -1,16 +1,41 @@
 import { createSlice } from '@reduxjs/toolkit'
-import data from '../data.js'
 
-const initialState = {}
-
-const shop = createSlice({
+export const shop = createSlice({
 	name: 'shop',
-	initialState,
+	initialState: {
+		items: [],
+	},
 	reducers: {
-		shop: (state, action) => {
-			return { products: data.products }
-		}
-	}	
-})
+		setItems: (store, action) => {
+			store.items = action.payload;
+		},
+		setError: (store, action) => {
+			store.error = action.payload;
+		},
+	},
+});
 
-export default shop
+export const showShop = () => {
+	return (dispatch) => {
+		
+		const options = {
+			method: "GET",
+			headers: {
+                'Content-Type': 'application/json',
+            },
+		};
+		fetch('http://localhost:3003/api/products', options)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data) {
+					dispatch(shop.actions.setItems(data));
+					dispatch(shop.actions.setError(null));
+					console.log("res", data)
+				} else {
+					dispatch(shop.actions.setError(data));
+					console.log("res2", data)
+				}
+			})
+			
+	};
+};
