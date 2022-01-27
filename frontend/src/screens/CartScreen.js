@@ -4,8 +4,6 @@ import { useParams, useLocation } from 'react-router-dom'
 const CartScreen = () => {
     const { id } = useParams()
     const location = useLocation()
-    //const { quantity } = location.state
-    //const id = props.match.params.id
     const quantity = location.search
         ? Number(location.search.split('=')[1])
         : 1

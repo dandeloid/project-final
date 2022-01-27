@@ -28,12 +28,6 @@ const ProductScreen = () => {
         )
     } */
 
-    //NEEDS FIXING
-/*     const addToCart = () => {
-        console.log(id, quantity)
-        //props.history.push(`/cart/${id}?quantity=${quantity}`)
-    } */
-
      return (
         <main>     
             {loading ? (
@@ -100,12 +94,6 @@ const ProductScreen = () => {
                                             </div>
                                         </li>
                                         <li>
-    {/*                                         <button 
-                                                className="primary block"
-                                                onClick={() => addToCart(id, quantity)}
-                                            >
-                                                Add to Cart
-                                            </button> */}
                                             <Link to={`/cart/${id}?quantity=${quantity}`}>BUTTON</Link>
                                         </li>
                                     </>

@@ -9,7 +9,8 @@
 
 # TODO
 
-- Backend
+- Backend/Redux/Add to cart = Daniel
+- Layout/Database info/Categories screen = Pinar
 -
 
 # DONE
@@ -17,6 +18,7 @@
 - Main page template with mapped products - React/JSX & CSS
 - Rating Stars
 - Product screen
+- Created Store (for product/products fetch)
 -
 
 # INSTALLS
@@ -30,6 +32,8 @@
 - in package.json added under "scripts": "start":"nodemon --watch backend --exec node --experimental-modules backend/server.js"
 - frontend/package.json added "proxy":"http://localhost:3003"
 - /root/ npm install cors
+- /frontend/ npm install @reduxjs/toolkit
+-
 -
 
 testing

@@ -11,37 +11,18 @@ app.get('/api/products', (req, res) => {
     res.json(data.products)
 })
 
-app.get('/api/products/:id', (req, res) => {
+app.get('/api/products/:id', async (req, res) => {
     const { id } = req.params
-    const idNr = data.products.find(item => item._id === id)
+    const idNr = await data.products.find(item => item._id === id)
 
     if (!idNr) {  
       res.status(404).send('No product by that Id')
-      console.log("id:", id)
-      console.log("data.products", data.products)
     } else {
       res.json(idNr)
     }
   })
 
   
-///////
-// app.get('/books/id/:id', (req, res) => {
-//     const { id } = req.params
-  
-//     const bookNR = books.find(item => item.bookID === +id)
-  
-//     if (!bookNR) {
-//       res.status(404).send('No book found!')
-//     } else {
-//       res.json(bookNR)
-//     }
-//   })
-//////////
-
-
-
-
 app.get('/', (req, res) => {
     res.send('Server is ready!!!!')
 })
