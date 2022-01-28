@@ -11,7 +11,23 @@ app.get('/api/products', (req, res) => {
     res.json(data.products)
 })
 
-app.get('/api/products/:id', async (req, res) => {
+
+// get a list of products by querying their genre (from json file)
+app.get("/api/products/genre", (req, res) => {
+  const { genre } = req.query
+  let vinylsGenreData = data.products
+
+  if (genre) {
+    // api/products/genre?genre=pop  
+    vinylsGenreData = vinylsGenreData.filter(
+      (item) => item.genre.toLowerCase().indexOf(genre.toLowerCase()) !== -1
+    )
+  }
+  res.json(vinylsGenreData)
+})
+
+
+app.get('/api/products/id/:id', async (req, res) => {
     const { id } = req.params
     const idNr = await data.products.find(item => item._id === id)
 

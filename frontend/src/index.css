@@ -92,6 +92,11 @@ button.block {
 .back-button {
   color: black;
 }
+.cart-button {
+  color: black;
+  background-color: white;
+  padding: 0.5rem;
+}
 
 /* HEAD */
 header a {
@@ -161,4 +166,10 @@ img.large {
 }
 .error {
   color: red;
+}
+
+/* GENRE AND SUB-CATEGORIES  */
+.genre-container {
+  display: flex;
+  justify-content: center;
 }

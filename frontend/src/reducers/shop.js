@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+//The product store
 export const shop = createSlice({
 	name: 'shop',
 	initialState: {
@@ -34,7 +35,7 @@ export const showShop = () => {
             },
 		};
 		dispatch(shop.actions.setLoading(true))
-		fetch('http://localhost:3003/api/products', options)		
+		fetch('http://localhost:3003/api/products/genre?genre=pop', options)		
 			.then((res) => res.json())
 			.then((data) => {
 				if (data) {
@@ -61,7 +62,7 @@ export const showProduct = (id) => {
             },
 		};
 		dispatch(shop.actions.setLoading(true))
-		fetch(`http://localhost:3003/api/products/${id}`, options)
+		fetch(`http://localhost:3003/api/products/id/${id}`, options)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data) {
@@ -76,3 +77,4 @@ export const showProduct = (id) => {
 			
 	};
 };
+

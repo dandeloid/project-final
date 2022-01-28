@@ -1,11 +1,17 @@
 # INFO
 
-- E-Commerce site with:
-  - Header
-  - Main
-  - Footer
-  -
-  - Product images = 720x720
+- Project by Daniel & Pinar
+
+# E-Commerce site with:
+
+- Header
+- Main
+- Footer
+- Product screen
+- Cart screen
+- Categories
+- Product images = 600x600
+-
 
 # TODO
 
@@ -18,7 +24,7 @@
 - Main page template with mapped products - React/JSX & CSS
 - Rating Stars
 - Product screen
-- Created Store (for product/products fetch)
+- Created Store ("shop" for product/products fetch)
 -
 
 # INSTALLS
@@ -33,9 +39,10 @@
 - frontend/package.json added "proxy":"http://localhost:3003"
 - /root/ npm install cors
 - /frontend/ npm install @reduxjs/toolkit
--
+- /frontend/ npm install @mui/material @emotion/react @emotion/styled
 -
 
-testing
+# TO THINK ABOUT
 
+- Error responses
 -

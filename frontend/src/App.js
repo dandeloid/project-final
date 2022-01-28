@@ -7,14 +7,17 @@ import { shop } from './reducers/shop'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
-import ProductScreen from './components/ProductScreen'
-import HomeScreen from './components/HomeScreen'
-import CartScreen from './screens/CartScreen'
 import NotFound from './components/NotFound'
+import ProductScreen from './screens/ProductScreen'
+import HomeScreen from './screens/HomeScreen'
+import CartScreen from './screens/CartScreen'
+import { cart } from './reducers/cart'
+
 
 ////////////////
 const reducer = combineReducers({
   shop: shop.reducer,
+  cart: cart.reducer,
 })
 
 const store = configureStore({ reducer })

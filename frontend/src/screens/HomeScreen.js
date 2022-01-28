@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
-import Product from './Product'
-import Loading from './Loading' 
+import Product from '../components/Product'
+import Loading from '../components/Loading' 
+import GenreCard from '../components/GenreCard'
 
 import { showShop } from "../reducers/shop"
 import { useSelector, useDispatch } from 'react-redux'
@@ -16,6 +17,7 @@ const HomeScreen = () => {
 
     return (
         <main>
+            <GenreCard />
             {loading ? (
                <Loading/> 
             ) : (

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 
-import Rating from './Rating'
-import Loading from './Loading'
+import Rating from '../components/Rating'
+import Loading from '../components/Loading'
 
 import { showProduct } from "../reducers/shop"
 import { useSelector, useDispatch } from 'react-redux'
@@ -59,7 +59,7 @@ const ProductScreen = () => {
                                 <li>
                                     <div className="row">
                                         <div>Price</div>
-                                        <div className="price">${product.price}</div>
+                                        <div className="price">{product.price} SEK</div>
                                     </div>
                                 </li>
                                 <li>
@@ -94,7 +94,7 @@ const ProductScreen = () => {
                                             </div>
                                         </li>
                                         <li>
-                                            <Link to={`/cart/${id}?quantity=${quantity}`}>BUTTON</Link>
+                                            <Link to={`/cart/${id}?quantity=${quantity}`} className="cart-button">Add to Cart</Link>
                                         </li>
                                     </>
                                 )}
