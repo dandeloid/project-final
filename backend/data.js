@@ -62,7 +62,7 @@ const data = {
         price: 99,
         nrStock: 0,
         brand: "Virgin",
-        rating: 2.1,
+        rating: 2.5,
         nrRating: 6,
         released: "1998",
       },

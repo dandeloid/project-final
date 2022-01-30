@@ -12,7 +12,7 @@ app.get('/api/products', (req, res) => {
 })
 
 
-// get a list of products by querying their genre (from json file)
+// get a list of products by querying their genre (from json file).
 app.get("/api/products/genre", (req, res) => {
   const { genre } = req.query
   let vinylsGenreData = data.products
