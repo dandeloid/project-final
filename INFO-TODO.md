@@ -44,5 +44,5 @@
 
 # TO THINK ABOUT
 
-- Error responses
+- Error/success responses
 -
