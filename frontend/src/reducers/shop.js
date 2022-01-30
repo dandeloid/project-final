@@ -24,7 +24,7 @@ export const shop = createSlice({
 	},
 });
 
-// Full products
+// Full products (/genre?genre=pop)
 export const showShop = () => {
 	return (dispatch) => {
 		
@@ -35,7 +35,7 @@ export const showShop = () => {
             },
 		};
 		dispatch(shop.actions.setLoading(true))
-		fetch('http://localhost:3003/api/products/genre?genre=pop', options)		
+		fetch('http://localhost:3003/api/products', options)		
 			.then((res) => res.json())
 			.then((data) => {
 				if (data) {

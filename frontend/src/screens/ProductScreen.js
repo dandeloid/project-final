@@ -6,6 +6,7 @@ import Rating from '../components/Rating'
 import Loading from '../components/Loading'
 
 import { showProduct } from "../reducers/shop"
+import { cart } from '../reducers/cart'
 import { useSelector, useDispatch } from 'react-redux'
 
 const ProductScreen = () => {
@@ -27,6 +28,10 @@ const ProductScreen = () => {
             </div>   
         )
     } */
+
+    const addToCart = () => {
+        dispatch(cart.actions.setCart({id, quantity}))
+    }
 
      return (
         <main>     
