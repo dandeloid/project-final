@@ -1,14 +1,16 @@
-import React from 'react' 
+import React from 'react'
+
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
         <header className="row">
             <div>
-                <a className="brand" href="/">The Vinyl Shop</a>
+                <Link to="/" className="brand">The Vinyl Shop</Link>
             </div>
             <div>
-                <a href="/Cart">Cart</a>
-                <a href="/Contact">Contact</a>
+                <Link to="/Cart">Cart</Link>
+                <Link to="/Contact">Contact</Link>
             </div>
         </header>    
     )

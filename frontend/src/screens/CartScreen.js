@@ -1,31 +1,21 @@
-import React, { useEffect } from 'react' 
-import { useParams, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
-import { cart } from '../reducers/cart'
+import React from 'react' 
+import { useSelector } from 'react-redux'
 
 const CartScreen = () => {
-    const { id } = useParams()
-    const location = useLocation()
-    const quantity = location.search
-        ? Number(location.search.split('=')[1])
-        : 1
-        console.log(quantity)
 
-    const dispatch = useDispatch()
-    
-        useEffect(()=> {
-            
-                dispatch(cart.actions.setCart({id, quantity}))
-            
-        },[dispatch, id, quantity])
+    const cart = useSelector((store) => store.cart.cart)
+
+    if (cart.length === 0) {
+        return <p>Empty Cart, buy stuff!</p>
+    }
 
     return (
-        <main className="row center">
-            <h1>Cart</h1>
-            <p>Add to cart</p>
-            <p>Product: {id}</p>
-            <p>Quantity: {quantity}</p>
+        <main>
+            <h1>Added to cart</h1>
+            <p>Artist: {cart.product.name}</p>
+            <p>Title: {cart.product.title}</p>
+            <p>Quantity: {cart.quantity}</p>
+            <p>Total price: {(cart.quantity * cart.product.price)}</p>
         </main>    
     )
 }

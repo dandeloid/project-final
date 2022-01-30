@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 
 import Rating from '../components/Rating'
@@ -11,10 +11,11 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const ProductScreen = () => {
     const { id } = useParams()
-    const dispatch = useDispatch()
     const [quantity, setQuantity] = useState(1)
     const product = useSelector((store) => store.shop.item)
     const loading = useSelector((store) => store.shop.loading)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(showProduct(id))
@@ -30,7 +31,8 @@ const ProductScreen = () => {
     } */
 
     const addToCart = () => {
-        dispatch(cart.actions.setCart({id, quantity}))
+        dispatch(cart.actions.setCart({product, quantity}))
+        navigate('/cart')
     }
 
      return (
@@ -99,7 +101,8 @@ const ProductScreen = () => {
                                             </div>
                                         </li>
                                         <li>
-                                            <Link to={`/cart/${id}?quantity=${quantity}`} className="cart-button">Add to Cart</Link>
+                                            <button onClick={() => addToCart()}>Click</button>
+                                            {/* <Link to={`/cart/${id}?quantity=${quantity}`} className="cart-button">Add to Cart</Link> */}
                                         </li>
                                     </>
                                 )}
