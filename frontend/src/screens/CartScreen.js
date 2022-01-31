@@ -9,13 +9,15 @@ const CartScreen = () => {
         return <p>Empty Cart, buy stuff!</p>
     }
 
+    console.log(cart)
+
     return (
         <main>
             <h1>Added to cart</h1>
-            <p>Artist: {cart.product.name}</p>
-            <p>Title: {cart.product.title}</p>
+            <p>Artist: {cart.name}</p>
+            <p>Title: {cart.title}</p>
             <p>Quantity: {cart.quantity}</p>
-            <p>Total price: {(cart.quantity * cart.product.price)}</p>
+            <p>Total price: {(cart.quantity * cart.price)}</p>
         </main>    
     )
 }

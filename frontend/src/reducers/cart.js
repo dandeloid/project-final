@@ -9,6 +9,7 @@ export const cart = createSlice({
 	reducers: {
 		setCart: (store, action) => {
 			store.cart = action.payload
+			/* store.cart.push({...action.payload}) */
 		},
 	},
 });
