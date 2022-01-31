@@ -31,7 +31,7 @@ const ProductScreen = () => {
     } */
 
     const addToCart = () => {
-        dispatch(cart.actions.setCart({...product, quantity}))
+        dispatch(cart.actions.addItem({...product, quantity}))
         navigate('/cart')
     }
 

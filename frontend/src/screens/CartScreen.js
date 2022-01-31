@@ -1,23 +1,37 @@
 import React from 'react' 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { cart } from '../reducers/cart'
 
 const CartScreen = () => {
 
-    const cart = useSelector((store) => store.cart.cart)
 
-    if (cart.length === 0) {
-        return <p>Empty Cart, buy stuff!</p>
-    }
+    const inCart = useSelector((store) => store.cart.cart)
+
+    const dispatch = useDispatch()
 
     console.log(cart)
 
+    const removeFromCart = (product) => {
+        dispatch(cart.actions.removeItem({product}))
+    }
+
+
+    if (inCart.length === 0) {
+        return <p>Empty Cart, add items to cart!</p>
+    }
     return (
         <main>
-            <h1>Added to cart</h1>
-            <p>Artist: {cart.name}</p>
-            <p>Title: {cart.title}</p>
-            <p>Quantity: {cart.quantity}</p>
-            <p>Total price: {(cart.quantity * cart.price)}</p>
+            {inCart.map(product => (
+                <div key={product._id}>
+                <h1>Added to cart</h1>
+                <p>Artist: {product.name}</p>
+                <p>Title: {product.title}</p>
+                <p>Quantity: {product.quantity}</p>
+                <p>Total price: {(product.quantity * product.price)}</p>
+                <button onClick={() => removeFromCart(product)}>Remove</button>
+            </div>
+            ))}
         </main>    
     )
 }

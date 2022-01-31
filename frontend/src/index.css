@@ -173,3 +173,11 @@ img.large {
   display: flex;
   justify-content: center;
 }
+
+/* CART STUFF */
+.in-cart {
+  color: black;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 100%;
+}
