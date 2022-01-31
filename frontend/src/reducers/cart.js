@@ -14,15 +14,13 @@ export const cart = createSlice({
 			const productExist = store.cart.find((item) => item._id === product._id)
 
 			if (productExist){
-				productExist.quantity += nrToAdd
+				productExist.quantity = parseInt(productExist.quantity) + parseInt(nrToAdd)
 			} else {
 				store.cart.push({...product})
 			}
 		},
 		removeItem: (store, action) => {
-			const product = action.payload.product
-			console.log("product", product)
-			store.cart = []
+			store.cart = store.cart.filter((item) => item._id !== action.payload.product._id)
 		}
 	},
 });

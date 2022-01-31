@@ -101,7 +101,7 @@ const ProductScreen = () => {
                                             </div>
                                         </li>
                                         <li>
-                                            <button onClick={() => addToCart()}>Click</button>
+                                            <button onClick={() => addToCart()}>Add</button>
                                             {/* <Link to={`/cart/${id}?quantity=${quantity}`} className="cart-button">Add to Cart</Link> */}
                                         </li>
                                     </>
