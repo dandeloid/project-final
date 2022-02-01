@@ -3,7 +3,7 @@ import Product from '../components/Product'
 import Loading from '../components/Loading' 
 
 import { showShop } from "../reducers/shop"
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux"
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
