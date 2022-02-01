@@ -14,6 +14,7 @@ import HomeScreen from './screens/HomeScreen'
 import CartScreen from './screens/CartScreen'
 import CheckoutScreen from './screens/CheckoutScreen'
 import PayScreen from './screens/PayScreen'
+import ContactScreen from './screens/ContactScreen'
 
 
 
@@ -38,6 +39,7 @@ const App = () => {
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/checkout" element={<CheckoutScreen />} />
               <Route path="/pay" element={<PayScreen />} />
+              <Route path="/contact" element={<ContactScreen />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           <Footer />
