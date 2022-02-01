@@ -9,6 +9,7 @@ const CheckoutScreen = () => {
 
     return (
         <main>
+            <Link to="/cart" className="link-button">Back</Link>
             <h1>Total price:</h1>
             <p>{sumAllPrice} SEK</p>
 

@@ -4,7 +4,7 @@ const ContactScreen = () => {
 
     return (
         <main>
-            <h1>Hello and welcome to the Vinyl Shope</h1>
+            <h1>Hello and welcome to the Vinyl Shop</h1>
             <p>Email us at: contact@vinylshop.se</p>
         </main>    
     )

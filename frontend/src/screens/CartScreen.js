@@ -26,6 +26,7 @@ const CartScreen = () => {
     }
     return (
         <main>
+            <Link to="/" className="link-button">Back</Link>
             <Link to="/checkout" className="link-button">Checkout</Link>
             {inCart.map(product => (
                 <div key={product._id}>

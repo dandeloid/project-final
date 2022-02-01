@@ -41,7 +41,7 @@ const ProductScreen = () => {
                 <Loading/> 
             ) : (
                 <>
-                <Link className="link-button" to="/">Back</Link>
+                <Link to="/" className="link-button">Back</Link>
                 <div className="row top"> 
                     <div className="column-2">  
                         <img className="large" src={product.image} alt={product.name} /> 
