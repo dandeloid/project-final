@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Product from '../components/Product'
-import Loading from '../components/Loading' 
+//import Loading from '../components/Loading' 
 
 import { showShop } from "../reducers/shop"
 import { useSelector, useDispatch } from "react-redux"
@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux"
 const HomeScreen = () => {
     const dispatch = useDispatch()
     const products = useSelector((store) => store.shop.items)
-    const loading = useSelector((store) => store.shop.loading)
+    //const loading = useSelector((store) => store.shop.loading)
 
     const [selectedGenre, setSelectedGenre] = useState([])
 
@@ -29,26 +29,24 @@ const HomeScreen = () => {
         <main>
           <div className="genre-container">
             <button type="image" onClick={() => handleInput("")}>
-              <img src="/assets/all.png" height="100" width="100" />
+              <img src="/assets/all.png" height="100" width="100" alt="vinyl cover" />
               <p> GET'EM ALL</p>
             </button>
             <button type="image" onClick={() => handleInput("genre/?genre=pop")}>
-              <img src="/assets/pop.png" height="100" width="100" />
+              <img src="/assets/pop.png" height="100" width="100" alt="vinyl cover" />
               <p> POP</p>
             </button>
             <button type="button" onClick={() => handleInput("genre/?genre=hip")}>
-              <img src="/assets/hiphop.png" height="100" width="100" />
+              <img src="/assets/hiphop.png" height="100" width="100" alt="vinyl cover" />
               <p> HIP HOP</p>
             </button>
             <button type="button" onClick={() => handleInput("genre/?genre=rock")}>
-              <img src="/assets/rock.png" height="100" width="100" />
+              <img src="/assets/rock.png" height="100" width="100" alt="vinyl cover" />
               <p> ROCK</p>
             </button>
-            <button
-              type="button"
-              onClick={() => handleInput("genre/?genre=electronic")}
+            <button type="button" onClick={() => handleInput("genre/?genre=electronic")}
             >
-              <img src="/assets/electronic.png" height="100" width="100" />
+              <img src="/assets/electronic.png" height="100" width="100" alt="vinyl cover" />
               <p> ELECTRONIC</p>
             </button>
           </div>
