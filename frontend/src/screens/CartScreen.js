@@ -1,5 +1,6 @@
 import React from 'react' 
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { cart } from '../reducers/cart'
 
@@ -25,7 +26,7 @@ const CartScreen = () => {
     }
     return (
         <main>
-            <button onClick={() => removeAllFromCart()}>Remove all</button>
+            <Link to="/checkout" className="link-button">Checkout</Link>
             {inCart.map(product => (
                 <div key={product._id}>
                 <h1>Added to cart</h1>
@@ -39,6 +40,7 @@ const CartScreen = () => {
                 <button onClick={() => removeFromCart(product)}>Remove</button>
             </div>
             ))}
+            <button onClick={() => removeAllFromCart()}>Remove all</button>
         </main>    
     )
 }

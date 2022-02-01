@@ -89,8 +89,10 @@ button.primary {
 button.block {
   width: 100%;
 }
-.back-button {
+.link-button {
   color: black;
+  border: 1px solid black;
+  padding: 1rem;
 }
 .cart-button {
   color: black;
