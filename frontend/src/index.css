@@ -126,14 +126,13 @@ a.brand {
   border-radius: 0.5rem;
 } */
 img.small {
-  width: 10%;
+  max-width: 150px;
 }
 img.medium {
-  max-width: 29rem;
-  width: 100%;
+  max-width: 300px;
 }
 img.large {
-  width: 60%;
+  max-width: 600px;
 }
 
 /* CARD */

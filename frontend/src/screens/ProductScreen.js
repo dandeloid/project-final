@@ -44,7 +44,7 @@ const ProductScreen = () => {
                 <Link className="back-button" to="/">Back</Link>
                 <div className="row top"> 
                     <div className="column-2">  
-                        <img className="large" src={process.env.PUBLIC_URL + product.image} alt={product.name} /> 
+                        <img className="large" src={product.image} alt={product.name} /> 
                     </div>
                     <div className="column-1">
                         <ul>
