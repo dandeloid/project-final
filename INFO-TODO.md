@@ -15,8 +15,9 @@
 
 # TODO
 
-- Backend/Redux/Add to cart = Daniel
-- Layout/Database info/Categories screen = Pinar
+- Backend (schemas, mongoDB, heroku, endpoints(post, delete, patch etc.))
+- Search function
+- Styling
 -
 
 # DONE
@@ -25,6 +26,8 @@
 - Rating Stars
 - Product screen
 - Created Store ("shop" for product/products fetch)
+- Cart screen
+- Categories
 -
 
 # INSTALLS

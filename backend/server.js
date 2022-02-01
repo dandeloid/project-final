@@ -2,6 +2,10 @@ import express from 'express'
 import data from './data.js'
 import cors from 'cors'
 
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinyl"
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.Promise = Promise
+
 const app = express()
 
 app.use(cors())

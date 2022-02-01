@@ -56,7 +56,7 @@ const ProductScreen = () => {
                             <li>
                                 <Rating rating={product.rating} nrRating={product.nrRating} />
                             </li>
-                            <li>Price: ${product.price}</li>
+                            <li>Price: {product.price} SEK</li>
                             <li>Description:<p>{product.description}</p></li>
                         </ul>
                     </div>
