@@ -27,8 +27,10 @@ const CheckoutScreen = () => {
                   id="email"
                   name="email"
                   placeholder="Write your E-mail..."
+                  
                 />
                 <label htmlFor="email">Card details</label>
+                <div>
                 <input
                   type="number"
                   required
@@ -36,14 +38,15 @@ const CheckoutScreen = () => {
                   name="card"
                   placeholder="Card number                                            MM/YY CVC"
                 />
+                </div> 
                 <label htmlFor="name">Cardholder name</label>
                 <input
                   type="text"
                   required
                   id="name"
                   name="name"
-                  placeholder="Write your name..."
-                />
+                  placeholder="Write your name..."              
+                />        
               </div>
             </div>
     

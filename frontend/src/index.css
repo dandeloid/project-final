@@ -193,6 +193,7 @@ img.large {
   padding: 0.5rem;
   background-color: white;
   border-radius: 100%;
+  padding-left: 9px;
 }
 
 .checkout-section {

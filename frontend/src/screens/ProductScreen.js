@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 
-
 import Rating from '../components/Rating'
 import Loading from '../components/Loading'
 
@@ -21,14 +20,14 @@ const ProductScreen = () => {
         dispatch(showProduct(id))
     }, [dispatch, id])
 
-    //THIS IS NOT WORKING AFTER MOVING PRODUCT STATE TO STORE
-/*     if (!product) {
+    
+    if (product.length === 0) {
         return (
             <div className="row center">
                 <h1>Product Not Found!</h1>
             </div>   
         )
-    } */
+    }
 
     const addToCart = () => {
         dispatch(cart.actions.addItem({...product, quantity}))
@@ -102,7 +101,6 @@ const ProductScreen = () => {
                                         </li>
                                         <li>
                                             <button onClick={() => addToCart()}>Add</button>
-                                            {/* <Link to={`/cart/${id}?quantity=${quantity}`} className="cart-button">Add to Cart</Link> */}
                                         </li>
                                     </>
                                 )}

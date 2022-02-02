@@ -16,7 +16,11 @@ const Header = () => {
             <SearchBar/> 
             <div>
                 <span className="in-cart"> {cart.length} </span>
-                <Link to="/Cart">Cart</Link>
+                <Link to="/Cart">
+                 <span >
+                   <i className={"fa fa-shopping-cart fa-lg"} />
+                 </span>
+                </Link>
                 <Link to="/Contact">Contact</Link>
             </div>
         </header>    
