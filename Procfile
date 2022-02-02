@@ -1,1 +1,1 @@
-web: npm start --prefix backend
+web: node --experimental-modules backend/server.js

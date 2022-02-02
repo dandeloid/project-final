@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import SearchBar from './SearchBar'
+import SearchBarTest from './SearchBarTest'
 
 
 const Header = () => {
@@ -13,7 +13,7 @@ const Header = () => {
             <div>
                 <Link to="/" className="brand">The Vinyl Shop</Link>
             </div>
-            <SearchBar/> 
+            <SearchBarTest/> 
             <div>
                 <span className="in-cart"> {cart.length} </span>
                 <Link to="/Cart">Cart</Link>
