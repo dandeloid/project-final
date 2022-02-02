@@ -92,7 +92,7 @@ const ProductScreen = () => {
                                     <div className="row">
                                         <div>Status</div>
                                         {product.nrStock > 0 ? (
-                                            <span className="success">In Stock</span>
+                                            <span className="success">{product.nrStock} x In Stock</span>
                                         ) : ( 
                                             <span className="error">Not In Stock</span>
                                         )}

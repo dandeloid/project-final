@@ -16,6 +16,11 @@ const Product = (props) => {
             <p className="card-text">{product.title}</p>
           </Link>
           <Rating rating={product.rating} nrRating={product.nrRating} />
+          {product.nrStock > 0 ? (
+            <span className="success">In Stock</span>
+            ) : ( 
+            <span className="error">Not In Stock</span>
+            )}
           <div className="price">{product.price} SEK</div>
         </div>
       </div>
