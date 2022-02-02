@@ -12,6 +12,7 @@ const ProductScreen = () => {
     const { id } = useParams()
     const [quantity, setQuantity] = useState(1)
     const product = useSelector((store) => store.shop.item)
+    const inCart = useSelector((store) => store.cart.cart)
     const loading = useSelector((store) => store.shop.loading)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -29,9 +30,28 @@ const ProductScreen = () => {
         )
     }
 
-    const addToCart = () => {
-        dispatch(cart.actions.addItem({...product, quantity}))
-        navigate('/cart')
+/*     const productExist = inCart.find(
+        (item) => item._id === action.payload._id) */
+        
+
+    //const sumAllPrice = inCart.map(item => item.quantity * item.price).reduce((prev, curr) => prev + curr, 0)
+
+    const addToCart = () => {  
+        const prodExist = inCart.find((item) => item._id === product._id)
+        
+        if (prodExist){
+            const sum = parseInt(quantity)+parseInt(prodExist.quantity)
+                    
+             if (sum > prodExist.nrStock){
+                alert("Sry not enough in stock :(")  
+            } else {
+                dispatch(cart.actions.addItem({...product, quantity}))
+                navigate('/cart')
+            } 
+        } else {
+            dispatch(cart.actions.addItem({...product, quantity}))
+            navigate('/cart')
+        }
     }
 
      return (

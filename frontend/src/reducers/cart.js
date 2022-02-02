@@ -25,7 +25,7 @@ export const cart = createSlice({
         (item) => item._id === action.payload._id
       )
       if (productExist.quantity >= productExist.nrStock) {
-        alert("not enough in stock")
+        alert("Sry not enough in stock :(")
       } else {
         productExist.quantity++
       }
