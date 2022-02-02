@@ -40,9 +40,9 @@ app.get("/api/products/name", (req, res) => {
 
 
 
-app.get('/api/products/id/:id', async (req, res) => {
+app.get('/api/products/id/:id', (req, res) => {
   const { id } = req.params
-  const idNr = await data.products.find(item => item._id === id)
+  const idNr = data.products.find(item => item._id === id)
 
   if (!idNr) {  
     res.status(404).send('No product by that Id')

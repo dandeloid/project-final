@@ -43,7 +43,7 @@ const ProductScreen = () => {
             const sum = parseInt(quantity)+parseInt(prodExist.quantity)
                     
              if (sum > prodExist.nrStock){
-                alert("Sry not enough in stock :(")  
+                alert(`Sry not enough in stock :( You have ${prodExist.quantity}/${prodExist.nrStock} in cart.`)  
             } else {
                 dispatch(cart.actions.addItem({...product, quantity}))
                 navigate('/cart')
