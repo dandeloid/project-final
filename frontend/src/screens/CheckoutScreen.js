@@ -9,37 +9,93 @@ const CheckoutScreen = () => {
 
     return (
         <main>
-            <Link to="/cart" className="link-button">Back</Link>
-            <h1>Total price:</h1>
-            <p>{sumAllPrice} SEK</p>
-
-            <h1>Shipping details:</h1>
-            <section>
-                <form>
-                    <div>
-                        <ul>
-                        <label htmlFor="name">Your name</label>
-                            <input type="text" required id="name" name="name" placeholder="Write your name..."/>
-                        <label htmlFor="name">Your address</label>
-                            <input type="text" required id="address" name="address" placeholder="Write your address..."/>
-                        <label htmlFor="name">Your postcode</label>
-                            <input type="text" required id="postcode" name="postcode" placeholder="Write your postcode..."/>
-                        <label htmlFor="email">Your E-mail</label>
-                            <input type="email" required id="email" name="email" placeholder="Write your E-mail..."/>
-                        </ul>
-                    </div>       
-                <h3>Newsletter</h3>
-                <div>
-                <input type="radio" id="letter-yes" name="newsletter" value="yes"/>
-                    <label htmlFor="newsletter">Yes</label>
-                <input type="radio" id="letter-no" name="newsletter" value="no"/>  
-                    <label htmlFor="newsletter">No</label>
+          <Link to="/cart" className="link-button">
+            Back to Cart
+          </Link>
+    
+          <section className="checkout-section">
+            <div className="input-div">
+              <h1 className="checkout-title">Payment Details</h1>
+              <p className="payment-details">
+                Complete your purchase by providing your shipment details.
+              </p>
+              <div className="input-fields">
+                <label htmlFor="email">Email address</label>
+                <input
+                  type="email"
+                  required
+                  id="email"
+                  name="email"
+                  placeholder="Write your E-mail..."
+                />
+                <label htmlFor="email">Card details</label>
+                <input
+                  type="number"
+                  required
+                  id="card"
+                  name="card"
+                  placeholder="Card number                                            MM/YY CVC"
+                />
+                <label htmlFor="name">Cardholder name</label>
+                <input
+                  type="text"
+                  required
+                  id="name"
+                  name="name"
+                  placeholder="Write your name..."
+                />
+              </div>
+            </div>
+    
+            <div className="input-div">
+              <h1 className="checkout-title">Shipping address</h1>
+              <form className="checkout-form">
+                <div className="input-fields">
+                  <label htmlFor="name">Address</label>
+                  <input
+                    type="text"
+                    required
+                    id="address"
+                    name="address"
+                    placeholder="Write your address..."
+                  />
+    
+                  <label htmlFor="name">Postcode</label>
+                  <input
+                    type="text"
+                    required
+                    id="postcode"
+                    name="postcode"
+                    placeholder="Write your postcode..."
+                  />
                 </div>
-                <Link to="/pay" className="link-button" type="submit">PAY</Link>
-                </form>
-            </section>
-        </main>    
-    )
-}
-
+                <div className=" checkout-title">
+                  <h4 className="newsletter">Newsletter</h4>
+                  <div>
+                    <input
+                      type="radio"
+                      id="letter-yes"
+                      name="newsletter"
+                      value="yes"
+                    />
+                    <label htmlFor="newsletter">Yes</label>
+                    <input
+                      type="radio"
+                      id="letter-no"
+                      name="newsletter"
+                      value="no"
+                    />
+                    <label htmlFor="newsletter">No</label>
+                  </div>
+                </div>
+                <h4> Total {sumAllPrice} SEK</h4>
+                <Link to="/pay" type="submit">
+                  <button className="pay-button"> PAY {sumAllPrice} SEK </button>
+                </Link>
+              </form>
+            </div>
+          </section>
+        </main>
+      )
+    }
 export default CheckoutScreen  

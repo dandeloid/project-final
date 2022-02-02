@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 const SearchBar = () => {
   const [search, setSearch] = useState("")
-  const [searchResult, setSearchResult] = useState(false)
+  const [searchResult, setSearchResult] = useState("")
 
   const onSearchHandle = (search) => {
     console.log(search)

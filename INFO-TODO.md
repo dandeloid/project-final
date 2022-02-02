@@ -49,3 +49,13 @@
 
 - Error/success responses
 -
+
+# On Call Questions
+
+- Heroku deployment, missing some installation or something maybe?
+- Double click on our search function fetch
+-
+
+# Saved code snippets
+
+- web: node --experimental-modules backend/server.js

@@ -8,7 +8,7 @@ const PayScreen = () => {
     
     return (
         <main>
-            <Link to="/cart" className="link-button">Back</Link>
+            <Link to="/checkout" className="link-button">Back to Checkout</Link>
             <h1>PLS GIVE {sumAllPrice} MONEY!</h1>
         </main>    
     )
