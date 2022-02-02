@@ -10,7 +10,8 @@ const HomeScreen = () => {
     const products = useSelector((store) => store.shop.items)
     //const loading = useSelector((store) => store.shop.loading)
 
-    const [selectedGenre, setSelectedGenre] = useState([])
+    let [selectedGenre, setSelectedGenre] = useState([])
+    let [genre, setGenre] = useState()
 
     useEffect(() => {
         dispatch(showShop())
@@ -20,15 +21,23 @@ const HomeScreen = () => {
         fetch(`http://localhost:3003/api/products/${props}`)
           .then((res) => res.json())
           .then((data) => {
-            console.log("selected genre", data)
             setSelectedGenre(data)
+            if (props === "genre/?genre=pop"){
+              setGenre("POP")
+            } else if (props === "genre/?genre=hip") {
+              setGenre("HIP HOP")
+            } else if (props === "genre/?genre=rock") {
+              setGenre("ROCK")
+            } else if (props === "genre/?genre=electronic") {
+              setGenre("ELECTRONIC")
+            }
           })
       }
 
       return (
         <main>
           <div className="genre-container">
-            <button type="image" onClick={() => handleInput("")}>
+            <button type="image" onClick={() => setSelectedGenre("")}>
               <img src="/assets/all.png" height="100" width="100" alt="vinyl cover" />
               <p> GET'EM ALL</p>
             </button>
@@ -44,12 +53,19 @@ const HomeScreen = () => {
               <img src="/assets/rock.png" height="100" width="100" alt="vinyl cover" />
               <p> ROCK</p>
             </button>
-            <button type="button" onClick={() => handleInput("genre/?genre=electronic")}
-            >
+            <button type="button" onClick={() => handleInput("genre/?genre=electronic")}>
               <img src="/assets/electronic.png" height="100" width="100" alt="vinyl cover" />
               <p> ELECTRONIC</p>
             </button>
           </div>
+
+          {selectedGenre.length !== 0 && (
+            <div className="genre-header"> 
+              <h1>
+                {genre}
+              </h1>
+            </div>
+          )}
     
           {selectedGenre.length === 0 && (
             <section className="row center">

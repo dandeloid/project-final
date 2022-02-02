@@ -18,7 +18,6 @@ app.get("/api/products/genre", (req, res) => {
   let vinylsGenreData = data.products
 
   if (genre) {
-    // api/products/genre?genre=pop  
     vinylsGenreData = vinylsGenreData.filter(
       (item) => item.genre.toLowerCase().indexOf(genre.toLowerCase()) !== -1
     )
@@ -26,17 +25,31 @@ app.get("/api/products/genre", (req, res) => {
   res.json(vinylsGenreData)
 })
 
+// api/products/name?name=searchname  
+app.get("/api/products/name", (req, res) => {
+  const { name } = req.query
+  let vinylsNameData = data.products
+
+  if (name) { 
+    vinylsNameData = vinylsNameData.filter(
+      (item) => item.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
+    )
+  }
+  res.json(vinylsNameData)
+})
+
+
 
 app.get('/api/products/id/:id', async (req, res) => {
-    const { id } = req.params
-    const idNr = await data.products.find(item => item._id === id)
+  const { id } = req.params
+  const idNr = await data.products.find(item => item._id === id)
 
-    if (!idNr) {  
-      res.status(404).send('No product by that Id')
-    } else {
-      res.json(idNr)
-    }
-  })
+  if (!idNr) {  
+    res.status(404).send('No product by that Id')
+  } else {
+    res.json(idNr)
+  }
+})
 
   
 app.get('/', (req, res) => {
