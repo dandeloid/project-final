@@ -30,20 +30,14 @@ const ProductScreen = () => {
         )
     }
 
-/*     const productExist = inCart.find(
-        (item) => item._id === action.payload._id) */
-        
-
-    //const sumAllPrice = inCart.map(item => item.quantity * item.price).reduce((prev, curr) => prev + curr, 0)
-
     const addToCart = () => {  
-        const prodExist = inCart.find((item) => item._id === product._id)
+        const productExist = inCart.find((item) => item._id === product._id)
         
-        if (prodExist){
-            const sum = parseInt(quantity)+parseInt(prodExist.quantity)
+        if (productExist){
+            const sumQuantity = parseInt(quantity)+parseInt(productExist.quantity)
                     
-             if (sum > prodExist.nrStock){
-                alert(`Sry not enough in stock :( You have ${prodExist.quantity}/${prodExist.nrStock} in cart.`)  
+             if (sumQuantity > productExist.nrStock){
+                alert(`Sry not enough in stock :( You have ${productExist.quantity}/${productExist.nrStock} in cart.`)  
             } else {
                 dispatch(cart.actions.addItem({...product, quantity}))
                 navigate('/cart')
