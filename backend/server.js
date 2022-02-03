@@ -14,45 +14,31 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
-// mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-// mongoose.Promise = Promise
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.Promise = Promise
 
 
+const TestSchema = new mongoose.Schema({
+  message: {
+    type: String,
+    required: true,
+  },
+})
 
-//
-// const User = mongoose.model("User", UserSchema);
+const TestMessage = mongoose.model("TestMessage", TestSchema)
 
-// const authenticateUser = async (req, res, next) => {
-//   const accessToken = req.header("Authorization");
-//   try {
-//     const user = await User.findOne({ accessToken });
-
-//     if (user) {
-//       req.user = user;
-//       next();
-//     } else {
-//       res.status(401).json({
-//         response: {
-//           message: "Please, log in",
-//         },
-//         success: false,
-//       });
-//     }
-//   } catch (error) {
-//     res.status(400).json({
-//       response: "Something went wrong!",
-//       error: error,
-//       success: false,
-//     });
-//   }
-// };
-
+app.post("/api/products/vinyl", async (req, res) => {
+  const { message } = req.body
+  try {
+    const newTestMessage = await new TestMessage({ message }).save
+    res.status(201).json({ response: newTestMessage, success: true })
+  } catch (error) {
+    res.status(400).json({ response: error, success: false })
+  }
+})
 
 //
-
-
-
 
 // GET all products
 app.get('/api/products', (req, res) => {
