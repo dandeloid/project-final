@@ -49,7 +49,7 @@ const VinylSchema = new mongoose.Schema(
     nrRating: {
       type: Number,
     },
-    release: {
+    released: {
       type: Date,
     },
     about: {
@@ -74,27 +74,29 @@ app.post("/api/products/vinyl", async (req, res) => {
     name,
     title,
     genre,
+    image,
     price,
     nrStock,
     brand,
     rating,
     nrRating,
-    release,
+    released,
     about,
   } = req.body
   try {
-    const newVinyl = await new Vinyl(
+    const newVinyl = await new Vinyl({
       name,
       title,
       genre,
       price,
+      image,
       nrStock,
       brand,
       rating,
       nrRating,
-      release,
+      released,
       about
-    ).save()
+    }).save()
     res.status(201).json({ response: newVinyl, success: true })
   } catch (error) {
     res.status(400).json({ response: error, success: false })
