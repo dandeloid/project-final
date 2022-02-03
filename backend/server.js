@@ -58,6 +58,6 @@ app.get('/', (req, res) => {
 
 
 const port = process.env.PORT || 3003
-app.listen(3003, () => {
+app.listen(port, () => {
     console.log(`Server at http://localhost:${port}`)
 })
