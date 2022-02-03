@@ -31,7 +31,7 @@ const TestMessage = mongoose.model("TestMessage", TestSchema)
 app.post("/api/products/vinyl", async (req, res) => {
   const name = req.body
   try {
-    const newTestMessage = await new TestMessage(name).save
+    const newTestMessage = await new TestMessage(name).save()
     res.status(201).json({ response: newTestMessage, success: true, hey: "dude" })
   } catch (error) {
     res.status(400).json({ response: error, success: false })
