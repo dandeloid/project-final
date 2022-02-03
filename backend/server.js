@@ -18,27 +18,89 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
-
-const TestSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
+// Schema for vinyl product
+const VinylSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+    },
+    title: {
+      type: String,
+    },
+    genre: {
+      type: String,
+      enum: ["Pop", "Hip Hop", "Rock", "Electronic"],
+    },
+    image: {
+      type: String,
+    },
+    price: {
+      type: Number,
+    },
+    nrStock: {
+      type: Number,
+    },
+    brand: {
+      type: String,
+    },
+    rating: {
+      type: Number,
+    },
+    nrRating: {
+      type: Number,
+    },
+    release: {
+      type: Date,
+    },
+    about: {
+      type: String,
+      maxlength: 900,
+      trim: true,
+    },
   },
-})
+  {
+    timestamps: true,
+  }
+)
 
-const TestMessage = mongoose.model("TestMessage", TestSchema)
 
+// Vinyl product model
+const Vinyl = mongoose.model("Vinyl", VinylSchema)
+
+
+// POST for vinyl product
 app.post("/api/products/vinyl", async (req, res) => {
-  const name = req.body
+  const {
+    name,
+    title,
+    genre,
+    price,
+    nrStock,
+    brand,
+    rating,
+    nrRating,
+    release,
+    about,
+  } = req.body
   try {
-    const newTestMessage = await new TestMessage(name).save()
-    res.status(201).json({ response: newTestMessage, success: true, hey: "dude" })
+    const newVinyl = await new Vinyl(
+      name,
+      title,
+      genre,
+      price,
+      nrStock,
+      brand,
+      rating,
+      nrRating,
+      release,
+      about
+    ).save()
+    res.status(201).json({ response: newVinyl, success: true })
   } catch (error) {
     res.status(400).json({ response: error, success: false })
   }
 })
 
-//
 
 // GET all products
 app.get('/api/products', (req, res) => {

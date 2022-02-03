@@ -16,8 +16,7 @@ const VinylSchema = new mongoose.Schema(
       type: String,
     },
     price: {
-      type: String,
-      enum: ["SEK", "USD", "EUR"],
+      type: Number,
     },
     nrStock: {
       type: Number,
