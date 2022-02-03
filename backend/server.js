@@ -20,7 +20,7 @@ mongoose.Promise = Promise
 
 
 const TestSchema = new mongoose.Schema({
-  message: {
+  name: {
     type: String,
     required: true,
   },
@@ -29,10 +29,10 @@ const TestSchema = new mongoose.Schema({
 const TestMessage = mongoose.model("TestMessage", TestSchema)
 
 app.post("/api/products/vinyl", async (req, res) => {
-  const { message } = req.body
+  const name = req.body
   try {
-    const newTestMessage = await new TestMessage({ message }).save
-    res.status(201).json({ response: newTestMessage, success: true })
+    const newTestMessage = await new TestMessage(name).save
+    res.status(201).json({ response: newTestMessage, success: true, hey: "dude" })
   } catch (error) {
     res.status(400).json({ response: error, success: false })
   }
