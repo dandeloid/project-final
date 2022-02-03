@@ -1,17 +1,5 @@
 import mongoose from "mongoose"
 
-// _id: "11", -------------
-// name: "Queen",
-// title: "Gretist Hits",
-// genre: "Pop",
-// image: "/assets/p9.jpeg",
-// price: 200,
-// nrStock: 12,
-// brand: "by EMI Records",
-// rating: 4.6,
-// nrRating: 187,
-// release: "1980",
-
 const VinylSchema = new mongoose.Schema(
   {
     name: {
@@ -22,7 +10,7 @@ const VinylSchema = new mongoose.Schema(
     },
     genre: {
       type: String,
-      enum: ["Pop", "Hip hop", "Electro", "Jazz"],
+      enum: ["Pop", "Hip hop", "Rock", "Electronic"],
     },
     image: {
       type: String,
@@ -48,7 +36,7 @@ const VinylSchema = new mongoose.Schema(
     },
     about: {
       type: String,
-      maxlength: 300,
+      maxlength: 900,
       trim: true,
     },
   },

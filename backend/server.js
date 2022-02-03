@@ -1,18 +1,65 @@
 import express from 'express'
 import data from './data.js'
 import cors from 'cors'
+import mongoose from 'mongoose'
+import VinlySchema from "./schemas/vinyl.js";
+
+// import crypto from 'crypto'
+// import bcrypt from 'bcrypt'
+
+// import { UserSchema } from "./Schemas/user";
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
+// const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
+// mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.Promise = Promise
+
+
+
+//
+// const User = mongoose.model("User", UserSchema);
+
+// const authenticateUser = async (req, res, next) => {
+//   const accessToken = req.header("Authorization");
+//   try {
+//     const user = await User.findOne({ accessToken });
+
+//     if (user) {
+//       req.user = user;
+//       next();
+//     } else {
+//       res.status(401).json({
+//         response: {
+//           message: "Please, log in",
+//         },
+//         success: false,
+//       });
+//     }
+//   } catch (error) {
+//     res.status(400).json({
+//       response: "Something went wrong!",
+//       error: error,
+//       success: false,
+//     });
+//   }
+// };
+
+
+//
+
+
+
+
+// GET all products
 app.get('/api/products', (req, res) => {
-    res.json(data.products)
+  res.json(data.products)
 })
 
-
-// get a list of products by querying their genre (from json file)
+// GET a list of products by querying their genre: api/products/genre?genre="genrename"
 app.get("/api/products/genre", (req, res) => {
   const { genre } = req.query
   let vinylsGenreData = data.products
@@ -25,7 +72,7 @@ app.get("/api/products/genre", (req, res) => {
   res.json(vinylsGenreData)
 })
 
-// api/products/name?name=searchname  
+// GET for searching artists: api/products/name?name="searchname"  
 app.get("/api/products/name", (req, res) => {
   const { name } = req.query
   let vinylsNameData = data.products
@@ -38,8 +85,7 @@ app.get("/api/products/name", (req, res) => {
   res.json(vinylsNameData)
 })
 
-
-
+// GET products by ID
 app.get('/api/products/id/:id', (req, res) => {
   const { id } = req.params
   const idNr = data.products.find(item => item._id === id)
@@ -51,12 +97,12 @@ app.get('/api/products/id/:id', (req, res) => {
   }
 })
 
-  
+// Root
 app.get('/', (req, res) => {
     res.send('Server is ready!!!!')
 })
 
-
+// Server running?
 const port = process.env.PORT || 3003
 app.listen(port, () => {
     console.log(`Server at http://localhost:${port}`)
