@@ -50,7 +50,7 @@ const VinylSchema = new mongoose.Schema(
       type: Number,
     },
     released: {
-      type: Date,
+      type: String,
     },
     about: {
       type: String,
