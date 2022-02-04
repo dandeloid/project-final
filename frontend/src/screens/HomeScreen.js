@@ -13,7 +13,7 @@ const HomeScreen = () => {
     const genre = useSelector((store) => store.shop.genre)
     //const loading = useSelector((store) => store.shop.loading)
 
-    const [selectedGenre, setSelectedGenre] = useState([])
+    const [selectedGenre, setSelectedGenre] = useState(false)
 
     useEffect(() => {
         if (search === "" && selectedGenre === false){
@@ -76,7 +76,7 @@ const HomeScreen = () => {
               </h1>
             </div>
           )}
-          
+
           {search.length > 0 && (
             <div className="genre-header"> 
               <h1>
