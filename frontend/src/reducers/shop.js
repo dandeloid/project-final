@@ -6,6 +6,8 @@ export const shop = createSlice({
 	initialState: {
 		items: [],
 		item: [],
+		search: "",
+		genre: "",
 		loading: false,
 	},
 	reducers: {
@@ -17,6 +19,12 @@ export const shop = createSlice({
 		},
 		setLoading: (store, action) => {
 			store.loading = action.payload
+		},
+		setSearch: (store, action) => {
+			store.search = action.payload
+		},
+		setGenre: (store, action) => {
+			store.genre = action.payload
 		},
 		setError: (store, action) => {
 			store.error = action.payload

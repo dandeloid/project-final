@@ -2,34 +2,43 @@ import React, {useEffect, useState} from 'react'
 import Product from '../components/Product'
 //import Loading from '../components/Loading' 
 
+import { shop } from "../reducers/shop"
 import { showShop } from "../reducers/shop"
 import { useSelector, useDispatch } from "react-redux"
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
     const products = useSelector((store) => store.shop.items)
+    const search = useSelector((store) => store.shop.search)
+    const genre = useSelector((store) => store.shop.genre)
     //const loading = useSelector((store) => store.shop.loading)
 
     let [selectedGenre, setSelectedGenre] = useState([])
-    let [genre, setGenre] = useState()
 
     useEffect(() => {
-        dispatch(showShop())
-    }, [dispatch])
+        if (search === "" && selectedGenre < 1){
+          dispatch(shop.actions.setGenre("ALL VINYLS"))
+          dispatch(showShop())
+        }
+    }, [dispatch, search, selectedGenre])
 
     const handleInput = (props) => {
         fetch(`http://localhost:3003/api/products/${props}`)
           .then((res) => res.json())
           .then((data) => {
-            setSelectedGenre(data)
+            dispatch(shop.actions.setItems(data))
+            dispatch(shop.actions.setSearch(""))
+            setSelectedGenre(1)
             if (props === "genre/?genre=pop"){
-              setGenre("POP")
+              dispatch(shop.actions.setGenre("POP"))
             } else if (props === "genre/?genre=hip") {
-              setGenre("HIP HOP")
+              dispatch(shop.actions.setGenre("HIP HOP"))
             } else if (props === "genre/?genre=rock") {
-              setGenre("ROCK")
+              dispatch(shop.actions.setGenre("ROCK"))
             } else if (props === "genre/?genre=electronic") {
-              setGenre("ELECTRONIC")
+              dispatch(shop.actions.setGenre("ELECTRONIC"))
+            } else if (props === "") {
+              dispatch(shop.actions.setGenre("ALL VINYLS"))
             }
           })
       }
@@ -37,7 +46,7 @@ const HomeScreen = () => {
       return (
         <main>
           <div className="genre-container">
-            <button type="image" onClick={() => setSelectedGenre("")}>
+            <button type="image" onClick={() => handleInput("")}>
               <img src="/assets/all.png" height="100" width="100" alt="vinyl cover" />
               <p> GET'EM ALL</p>
             </button>
@@ -59,28 +68,27 @@ const HomeScreen = () => {
             </button>
           </div>
 
-          {selectedGenre.length !== 0 && (
+          {search === "" && (
             <div className="genre-header"> 
               <h1>
                 {genre}
               </h1>
             </div>
           )}
-    
-          {selectedGenre.length === 0 && (
-            <section className="row center">
-              {products.map((product) => (
-                <Product key={product._id} product={product} />
-              ))}
-            </section>
+          {search.length > 0 && (
+            <div className="genre-header"> 
+              <h1>
+                SEARCH: {search}
+              </h1>
+            </div>
           )}
-          {selectedGenre.length !== 0 && (
-            <section className="row center">
-              {selectedGenre.map((product) => (
-                <Product key={product._id} product={product} />
-              ))}
-            </section>
-          )}
+          
+          <section className="row center">
+            {products.map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
+          </section>
+
         </main>
       )
     }

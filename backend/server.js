@@ -14,9 +14,9 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
-// mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-// mongoose.Promise = Promise
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.Promise = Promise
 
 // Schema for vinyl product
 const VinylSchema = new mongoose.Schema(

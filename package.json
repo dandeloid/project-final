@@ -1,5 +1,5 @@
 {
-  "name": "Project for E-Commerce site",
+  "name": "Project for E Commerce site",
   "version": "1.0.0",
   "scripts": {
     "postinstall": "npm install --prefix backend"

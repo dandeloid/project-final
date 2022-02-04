@@ -44,6 +44,14 @@
 - /root/ npm install cors
 - /frontend/ npm install @reduxjs/toolkit
 - /frontend/ npm install @mui/material @emotion/react @emotion/styled
+- Moved package.json from /root to /backend. Kept a small portion of package.json in root with "postinstall": "npm install --prefix backend"
+- /backend/ npm install
+- /backend/ package.json removed the line "main": "index.js",
+- /backend/ moved "nodemon": "^2.0.15" in package.json devDependecies to dependencies
+- /backend/ npm i mongoose
+- /backend/ npm i bcrypt
+- /frontend/ npm i styled-components
+-
 -
 
 # TO THINK ABOUT
@@ -61,3 +69,8 @@
 # Saved code snippets
 
 - web: node --experimental-modules backend/server.js
+-
+
+# Links
+
+- https://vinylshop-api.herokuapp.com/api/products/vinyl

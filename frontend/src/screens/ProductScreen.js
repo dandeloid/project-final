@@ -36,7 +36,7 @@ const ProductScreen = () => {
         if (productExist){
             const sumQuantity = parseInt(quantity)+parseInt(productExist.quantity)
                     
-             if (sumQuantity > productExist.nrStock){
+            if (sumQuantity > productExist.nrStock){
                 alert(`Sry not enough in stock :( You have ${productExist.quantity}/${productExist.nrStock} in cart.`)  
             } else {
                 dispatch(cart.actions.addItem({...product, quantity}))
@@ -51,7 +51,7 @@ const ProductScreen = () => {
      return (
         <main>     
             {loading ? (
-                <Loading/> 
+                <Loading /> 
             ) : (
                 <>
                 <Link to="/" className="link-button">Back</Link>

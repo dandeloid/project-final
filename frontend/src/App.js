@@ -15,6 +15,7 @@ import CartScreen from './screens/CartScreen'
 import CheckoutScreen from './screens/CheckoutScreen'
 import PayScreen from './screens/PayScreen'
 import ContactScreen from './screens/ContactScreen'
+import UploadScreen from './screens/UploadScreen'
 
 
 
@@ -40,6 +41,7 @@ const App = () => {
               <Route path="/checkout" element={<CheckoutScreen />} />
               <Route path="/pay" element={<PayScreen />} />
               <Route path="/contact" element={<ContactScreen />} />
+              <Route path="/upload" element={<UploadScreen />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           <Footer />
