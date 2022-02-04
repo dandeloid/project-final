@@ -10,6 +10,12 @@ const SearchBar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const checkKey = (e) => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      onSearchHandle(e)
+    }
+  }
+
   const onSearchHandle = () => {
     fetch(`http://localhost:3003/api/products/name?name=${search}`)
       .then((response) => response.json())
@@ -32,6 +38,7 @@ const SearchBar = () => {
               placeholder="Search by artist"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => checkKey(e)}
             />
           </label>
           <button onClick={() => onSearchHandle()}>SEARCH</button>
