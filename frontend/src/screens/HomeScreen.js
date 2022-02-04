@@ -13,10 +13,10 @@ const HomeScreen = () => {
     const genre = useSelector((store) => store.shop.genre)
     //const loading = useSelector((store) => store.shop.loading)
 
-    let [selectedGenre, setSelectedGenre] = useState([])
+    const [selectedGenre, setSelectedGenre] = useState([])
 
     useEffect(() => {
-        if (search === "" && selectedGenre < 1){
+        if (search === "" && selectedGenre === false){
           dispatch(shop.actions.setGenre("ALL VINYLS"))
           dispatch(showShop())
         }
@@ -26,9 +26,9 @@ const HomeScreen = () => {
         fetch(`http://localhost:3003/api/products/${props}`)
           .then((res) => res.json())
           .then((data) => {
-            dispatch(shop.actions.setItems(data))
+            setSelectedGenre(true)
             dispatch(shop.actions.setSearch(""))
-            setSelectedGenre(1)
+            dispatch(shop.actions.setItems(data))            
             if (props === "genre/?genre=pop"){
               dispatch(shop.actions.setGenre("POP"))
             } else if (props === "genre/?genre=hip") {
@@ -45,6 +45,7 @@ const HomeScreen = () => {
 
       return (
         <main>
+
           <div className="genre-container">
             <button type="image" onClick={() => handleInput("")}>
               <img src="/assets/all.png" height="100" width="100" alt="vinyl cover" />
@@ -75,6 +76,7 @@ const HomeScreen = () => {
               </h1>
             </div>
           )}
+          
           {search.length > 0 && (
             <div className="genre-header"> 
               <h1>
