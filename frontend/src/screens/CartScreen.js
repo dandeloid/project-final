@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 import { cart } from '../reducers/cart'
 
+import Modal from '../components/Modal'
+
 const CartScreen = () => {
     const dispatch = useDispatch()
     const inCart = useSelector((store) => store.cart.cart)
@@ -26,6 +28,7 @@ const CartScreen = () => {
     }
     return (
         <main>
+            <Modal title="Sorry!" text="No more in stock." />
             <Link to="/" className="link-button">Back</Link>
             <Link to="/checkout" className="link-button">Checkout</Link>
             <h1>Added to cart</h1>

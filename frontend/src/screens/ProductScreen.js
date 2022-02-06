@@ -3,14 +3,17 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 
 import Rating from '../components/Rating'
 import Loading from '../components/Loading'
+import Modal from '../components/Modal'
 
 import { showProduct } from "../reducers/shop"
 import { cart } from '../reducers/cart'
+//import { shop } from "../reducers/shop"
 import { useSelector, useDispatch } from 'react-redux'
 
 const ProductScreen = () => {
     const { id } = useParams()
     const [quantity, setQuantity] = useState(1)
+    const [quantityCart, setQuantityCart] = useState("")
     const product = useSelector((store) => store.shop.item)
     const inCart = useSelector((store) => store.cart.cart)
     const loading = useSelector((store) => store.shop.loading)
@@ -25,7 +28,10 @@ const ProductScreen = () => {
     if (product.length === 0) {
         return (
             <div className="row center">
-                <h1>Product Not Found!</h1>
+                <ul>
+                    <h1>Product Not Found!</h1>
+                    <img className="medium" src="/assets/BlackEmptyCrate.jpeg" alt="Empty Crate" />
+                </ul>
             </div>   
         )
     }
@@ -37,7 +43,9 @@ const ProductScreen = () => {
             const sumQuantity = parseInt(quantity)+parseInt(productExist.quantity)
                     
             if (sumQuantity > productExist.nrStock){
-                alert(`Sry not enough in stock :( You have ${productExist.quantity}/${productExist.nrStock} in cart.`)  
+                //alert(`Sry not enough in stock :( You have ${productExist.quantity}/${productExist.nrStock} in cart.`)  
+                setQuantityCart(`${productExist.quantity}/${productExist.nrStock}`)
+                dispatch(cart.actions.setModalOn(true))
             } else {
                 dispatch(cart.actions.addItem({...product, quantity}))
                 navigate('/cart')
@@ -54,6 +62,7 @@ const ProductScreen = () => {
                 <Loading /> 
             ) : (
                 <>
+                <Modal title="Sorry!" text={"You already have " + quantityCart + " in your cart."}/>
                 <Link to="/" className="link-button">Back</Link>
                 <div className="row top"> 
                     <div className="column-2">  
