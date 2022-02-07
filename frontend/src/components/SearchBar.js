@@ -16,7 +16,8 @@ const SearchBar = () => {
       .then((response) => response.json())
       .then((data) => {
         if (search.length > 0) {
-          dispatch(shop.actions.setItems(data))
+          console.log("test", data.response)
+          dispatch(shop.actions.setItems(data.response))
           dispatch(shop.actions.setSearch(search))
           navigate("/")
         }

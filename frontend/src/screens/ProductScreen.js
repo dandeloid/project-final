@@ -18,11 +18,8 @@ const ProductScreen = () => {
   const navigate = useNavigate()
   // console.log("product id", id)
   // console.log("product id", id)
-  console.log("product data", product)
+  console.log("cart", inCart)
   console.log(product.response)
-  //console.log("product response", product.response.name)
-  // console.log("product _id", product._id)
-  //console.log("product response name", product.response.name)
 
   useEffect(() => {
     dispatch(showProduct(id))
@@ -37,7 +34,9 @@ const ProductScreen = () => {
   }
 
   const addToCart = () => {
-    const productExist = inCart.find((item) => item._id === product._id)
+    const productExist = inCart.find(
+      (item) => item._id === product.response._id
+    )
 
     if (productExist) {
       const sumQuantity = parseInt(quantity) + parseInt(productExist.quantity)
@@ -47,11 +46,11 @@ const ProductScreen = () => {
           `Sry not enough in stock :( You have ${productExist.quantity}/${productExist.nrStock} in cart.`
         )
       } else {
-        dispatch(cart.actions.addItem({ ...product, quantity }))
+        dispatch(cart.actions.addItem({ ...product.response, quantity }))
         navigate("/cart")
       }
     } else {
-      dispatch(cart.actions.addItem({ ...product, quantity }))
+      dispatch(cart.actions.addItem({ ...product.response, quantity }))
       navigate("/cart")
     }
   }
@@ -70,21 +69,8 @@ const ProductScreen = () => {
               <img
                 className="large"
                 src={product.response.image}
-                alt={product.name}
+                alt={product.response.name}
               />
-
-              {/* -
-               -
-               -
-               -
-               -
-               - added response after each product  
-               -
-               -
-               -
-               -
-               -
-               */}
             </div>
             <div className="column-1">
               <ul>

@@ -27,7 +27,9 @@ const HomeScreen = () => {
       .then((res) => res.json())
       .then((data) => {
         dispatch(shop.actions.setItems(data))
+
         dispatch(shop.actions.setSearch(""))
+        console.log("homescreen", data.response)
         setSelectedGenre(1)
         if (props === "genre/?genre=pop") {
           dispatch(shop.actions.setGenre("POP"))

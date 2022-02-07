@@ -5,6 +5,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 
 import { shop } from "./reducers/shop"
 import { cart } from "./reducers/cart"
+import { user } from "./reducers/user"
 
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -22,6 +23,7 @@ import UserScreen from "./screens/UserScreen"
 const reducer = combineReducers({
   shop: shop.reducer,
   cart: cart.reducer,
+  user: user.reducer,
 })
 
 // need to add other reducers
