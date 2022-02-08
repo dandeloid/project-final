@@ -183,11 +183,9 @@ app.get("/api/products/search", async (req, res) => {
 })
 
 // https://regex101.com/
-// https://stackoverflow.com/questions/9824010/mongoose-js-find-user-by-username-like-value
 
 app.get("/api/products/id/:id", async (req, res) => {
   const { id } = req.params
-  // _id id ?
   try {
     const singleProduct = await File.findById(id)
     if (singleProduct) {
@@ -214,9 +212,34 @@ app.get("/api/products/id/:id", async (req, res) => {
 //
 //
 //
-// protected endpoint for the authenticated user
-// app.get("/upload", authenticateUser)
-// app.get("/upload", (req, res) => {
+
+// before execuating the upload page to check if the user is allowed
+// const authenticateUser = async (req, res, next) => {
+//   const accessToken = req.header("Authorization")
+//   try {
+//     const user = await User.findOne({ accessToken })
+
+//     if (user) {
+//       next()
+//     } else {
+//       res.status(401).json({
+//         message: "Please, login",
+//         response: "Please, login",
+//         success: false,
+//       })
+//     }
+//   } catch (error) {
+//     res.status(400).json({
+//       message: "Ops! something went wrong!",
+//       response: error,
+//       success: false,
+//     })
+//   }
+// }
+
+// // protected endpoint for the authenticated user
+// app.get("/admin", authenticateUser)
+// app.get("/admin", (req, res) => {
 //   res.json({ message: "You are logged in! Now you can sell vinyls" })
 // })
 
@@ -227,6 +250,7 @@ const UserSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
     unique: true,
+    required: true,
   },
   password: {
     type: String,
@@ -248,8 +272,8 @@ app.post("/signup", async (req, res) => {
   try {
     const salt = bcrypt.genSaltSync()
 
-    if (password.length < 4) {
-      throw { message: "Password must be at least 4 character long" }
+    if (password.length < 5) {
+      throw { message: "Password must be at least 5 character long" }
     }
 
     const newUser = await new User({
@@ -300,7 +324,8 @@ app.post("/signin", async (req, res) => {
 
   try {
     const user = await User.findOne({ email })
-    if ((user && bcrypt.compareSync(password), user.password)) {
+
+    if (user && bcrypt.compareSync(password, user.password)) {
       res.status(200).json({
         response: {
           userId: user._id,
@@ -308,9 +333,11 @@ app.post("/signin", async (req, res) => {
           accessToken: user.accessToken,
         },
       })
+      console.log(user.email)
     } else {
       res.status(404).json({
-        response: "email or password doesn't match",
+        message: "Email or password does not match",
+        response: "User not found",
         success: false,
       })
     }
