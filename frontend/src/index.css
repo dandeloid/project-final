@@ -285,13 +285,17 @@ input[type="file"] {
 }
 
 .input-field {
-  padding: 10px;
+  padding: 25px;
 }
 
 .title-text {
   text-align: center;
   font-weight: 600;
   font-size: 18px;
+}
+label {
+  margin: 10px 0 4px;
+  padding-left: 2px;
 }
 .input-labels {
   display: flex;
@@ -315,8 +319,17 @@ input[type="file"] {
   font-family: "Raleway", sans-serif;
   font-size: 14px;
   background-color: #dddddd88;
-  margin: 15px 0;
+  margin: 5px 0 15px;
   font-size: 12px;
   width: 100%;
   color: #525252;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #cbcbcb;
+}
+.separated-inputs {
+  display: flex;
+  margin-top: 10px;
 }

@@ -1,10 +1,11 @@
 import express from "express"
+// import data from "./data.js"
 import cors from "cors"
 import mongoose from "mongoose"
 import listEndpoints from "express-list-endpoints"
 import File from "./schemas/vinyl.js"
 import UserSchema from "./schemas/user.js"
-// import crypto from "crypto"
+import crypto from "crypto"
 import bcrypt from "bcrypt"
 
 import dotenv from "dotenv"
@@ -24,6 +25,50 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
 //const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylUpload"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
+
+// Mongoose Schema for File model
+// const File = mongoose.model("File", {
+//   vinylName: String,
+//   name: {
+//     type: String,
+//     require: true,
+//   },
+//   title: {
+//     type: String,
+//     require: true,
+//   },
+//   genre: {
+//     type: String,
+//     enum: ["pop", "hiphop", "rock", "electronic"],
+//   },
+//   image: {
+//     type: String,
+//   },
+//   price: {
+//     type: Number,
+//     require: true,
+//   },
+//   nrStock: {
+//     type: Number,
+//   },
+//   brand: {
+//     type: String,
+//   },
+//   rating: {
+//     type: Number,
+//   },
+//   nrRating: {
+//     type: Number,
+//   },
+//   released: {
+//     type: String,
+//   },
+//   about: {
+//     type: String,
+//     maxlength: 900,
+//     trim: true,
+//   },
+// })
 
 const cloudinary = cloudinaryFramework.v2
 cloudinary.config({
@@ -108,10 +153,12 @@ app.get("/api/products/genre", async (req, res) => {
   }
 })
 
-// GET request for searching artists, albums and released years: api/products/seacrh?q="search value"
+// GET for searching artists and albums: api/products/seacrh?name="searchname"
+// or api/products/seacrh?title="searchtitle"
 
 app.get("/api/products/search", async (req, res) => {
   try {
+    // const query = sanitizer.value(req.query["q"], "string")
     const query = req.query["q"]
     console.log("req.query", query)
     const vinylByName = await File.find({
@@ -149,6 +196,68 @@ app.get("/api/products/id/:id", async (req, res) => {
     res.status(400).json({ error: "No id", success: false })
   }
 })
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+// before execuating the upload page to check if the user is allowed
+// const authenticateUser = async (req, res, next) => {
+//   const accessToken = req.header("Authorization")
+//   try {
+//     const user = await User.findOne({ accessToken })
+
+//     if (user) {
+//       next()
+//     } else {
+//       res.status(401).json({
+//         message: "Please, login",
+//         response: "Please, login",
+//         success: false,
+//       })
+//     }
+//   } catch (error) {
+//     res.status(400).json({
+//       message: "Ops! something went wrong!",
+//       response: error,
+//       success: false,
+//     })
+//   }
+// }
+
+// // protected endpoint for the authenticated user
+// app.get("/admin", authenticateUser)
+// app.get("/admin", (req, res) => {
+//   res.json({ message: "You are logged in! Now you can sell vinyls" })
+// })
+
+// Schema for User Login
+// const UserSchema = new mongoose.Schema({
+//   email: {
+//     type: String,
+//     trim: true,
+//     lowercase: true,
+//     unique: true,
+//     required: true,
+//   },
+//   password: {
+//     type: String,
+//     required: true,
+//   },
+//   accessToken: {
+//     type: String,
+//     default: () => crypto.randomBytes(128).toString("hex"), // generate a random string with hex type
+//   },
+// })
 
 // mongoose.model for User Login Page
 const User = mongoose.model("User", UserSchema)

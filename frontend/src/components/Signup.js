@@ -1,18 +1,29 @@
-import React, { useState } from "react"
-import { useDispatch, batch } from "react-redux"
-//import { useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from "react"
+import { useSelector, useDispatch, batch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { API_LOGIN_URL } from "../utils/urls"
 import { user } from "../reducers/user"
 
+//when signup it directs to the upload page
+// but signin does not work in the same way
+
+//after refreshing the page user sets logged out?
 const Signup = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [mode, setMode] = useState("signup") // either for signup or signin
+  const [mode, setMode] = useState("signup")
   const [validationError, setValidationError] = useState(null)
 
-  // const accessToken = useSelector((store) => store.user.accessToken)
+  const accessToken = useSelector((store) => store.user.accessToken)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (accessToken) {
+      navigate("/upload")
+    }
+  }, [accessToken, navigate])
 
   const onUserSubmit = (event) => {
     event.preventDefault()
@@ -52,7 +63,7 @@ const Signup = () => {
   return (
     <section>
       <div>
-        <h1>Signup or Login to buy StoneCakes</h1>
+        <h1>Sign in or create an account to sell your Vinyl</h1>
       </div>
 
       <div>
@@ -91,11 +102,10 @@ const Signup = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* if we have error -> display it */}
+
         {validationError !== null && <p>{validationError}</p>}
-        {/* <button type="submit">Submit</button> */}
         {mode === "signup" ? (
-          <button type="submit">Create user</button>
+          <button type="submit">Sign up</button>
         ) : (
           <button type="submit">Login</button>
         )}
