@@ -62,7 +62,7 @@ const UploadScreen = () => {
     // formData.append("nrRating", nrRating.nrRating)
     //  formData.append("about", about.about)
 
-    fetch(`${BASE_URL}api/products`, {
+    fetch("https://vinylshop-api.herokuapp.com/api/products", {
       method: "POST",
       body: formData,
     })
