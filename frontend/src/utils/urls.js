@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:3003"
+export const BASE_URL = "https://vinylshop-api.herokuapp.com/"
+//const BASE_URL = "http://localhost:3003"
 
 // slug approach
 // slug will be the argument that we call API_URL

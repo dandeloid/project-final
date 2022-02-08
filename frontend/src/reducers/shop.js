@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { BASE_URL } from "../utils/urls"
 
 //The product store
 export const shop = createSlice({
@@ -42,7 +43,7 @@ export const showShop = () => {
             },
 		};
 		dispatch(shop.actions.setLoading(true))
-		fetch('http://localhost:3003/api/products', options)		
+		fetch(`${BASE_URL}api/products`, options)		
 			.then((res) => res.json())
 			.then((data) => {
 				if (data) {
@@ -67,7 +68,7 @@ export const showProduct = (id) => {
             },
 		};
 		dispatch(shop.actions.setLoading(true))
-		fetch(`http://localhost:3003/api/products/id/${id}`, options)
+		fetch(`${BASE_URL}api/products/id/${id}`, options)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data) {

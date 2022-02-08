@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
+import { BASE_URL } from "../utils/urls"
 
 import { shop } from '../reducers/shop'
+
 
 const SearchBar = () => {
   const [search, setSearch] = useState("")
@@ -18,7 +20,7 @@ const SearchBar = () => {
 
   const onSearchHandle = () => {
     //fetch(`http://localhost:3003/api/products/name?name=${search}`)
-    fetch(`http://localhost:3003/api/products/search?q=${search}`)
+    fetch(`${BASE_URL}api/products/search?q=${search}`)
       .then((response) => response.json())
       .then((data) => {
         if (search.length > 0){

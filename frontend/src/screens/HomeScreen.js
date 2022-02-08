@@ -6,6 +6,7 @@ import { shop } from "../reducers/shop"
 import { showShop } from "../reducers/shop"
 import { useSelector, useDispatch } from "react-redux"
 import Modal from '../components/Modal'
+import { BASE_URL } from "../utils/urls"
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -24,7 +25,7 @@ const HomeScreen = () => {
     }, [dispatch, search, selectedGenre])
 
     const handleInput = (props) => {
-        fetch(`http://localhost:3003/api/products/${props}`)
+        fetch(`${BASE_URL}api/products/${props}`)
           .then((res) => res.json())
           .then((data) => {
             setSelectedGenre(true)
