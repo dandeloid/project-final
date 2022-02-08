@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react"
 //import Loading from '../components/Loading'
 import { useSelector, useDispatch } from "react-redux"
 //import { addVinyl } from "../reducers/addVinyl"
+import { BASE_URL } from "../utils/urls"
 
 const UploadScreen = () => {
   const fileInput = useRef()
@@ -61,7 +62,7 @@ const UploadScreen = () => {
     // formData.append("nrRating", nrRating.nrRating)
     //  formData.append("about", about.about)
 
-    fetch("http://localhost:3003/api/products", {
+    fetch(`${BASE_URL}api/products`, {
       method: "POST",
       body: formData,
     })
