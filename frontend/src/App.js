@@ -43,7 +43,7 @@ const App = () => {
               <Route path="/checkout" element={<CheckoutScreen />} />
               <Route path="/pay" element={<PayScreen />} />
               <Route path="/contact" element={<ContactScreen />} />
-              {/* <Route path="/upload" element={<UploadScreen />} /> */}
+              <Route path="/upload" element={<UploadScreen />} />
               <Route path="/signup" element={<UserScreen />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
