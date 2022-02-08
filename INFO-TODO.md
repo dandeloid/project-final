@@ -51,7 +51,9 @@
 - /backend/ npm i mongoose
 - /backend/ npm i bcrypt
 - /frontend/ npm i styled-components
--
+- npm install cloudinary dotenv multer multer-storage-cloudinary
+- npm install express-list-endpoints
+- .env created for cloudinary secrets
 -
 
 # TO THINK ABOUT

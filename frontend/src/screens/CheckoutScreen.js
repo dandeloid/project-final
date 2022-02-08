@@ -72,7 +72,7 @@ const CheckoutScreen = () => {
                     placeholder="Write your postcode..."
                   />
                 </div>
-                <div className=" checkout-title">
+                <div className="checkout-title">
                   <h4 className="newsletter">Newsletter</h4>
                   <div>
                     <input

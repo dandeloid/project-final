@@ -1,3 +1,4 @@
+/* -------------------------------------------------------------- */
 html {
   font-size: 60%;
   box-sizing: border-box;
@@ -25,6 +26,9 @@ body {
   grid-template-rows: 14rem 1fr 8rem;
   height: 100%;
 }
+/* -------------------------------------------------------------- */
+/* -------------------------------------------------------------- */
+
 header {
   grid-area: header;
   background-color: black;
@@ -134,8 +138,8 @@ a.brand {
 
 /* IMAGES */
 /* img {
-  margin: 1rem;
-} */
+    margin: 1rem;
+  } */
 img.small {
   max-width: 100px;
 }
@@ -259,64 +263,4 @@ input#address {
 }
 .newsletter {
   margin: 5px 0;
-}
-
-/* Upload Page  */
-form {
-  font-family: "Raleway", sans-serif;
-  background-color: #d2fc29;
-  padding: 10px;
-  width: 70%;
-  max-width: 500px;
-  margin: 10px auto 30px;
-  color: #031a19;
-  box-shadow: 3px 4px 3px 1px rgb(218 218 218 / 48%);
-  border-radius: 3px;
-}
-input {
-  padding: 10px;
-  border: 1px solid #cbcbcb;
-}
-input[type="file"] {
-  padding: 7px;
-  border: none;
-  color: #1e1e1e;
-  border: 1px solid #cbcbcb;
-}
-
-.input-field {
-  padding: 10px;
-}
-
-.title-text {
-  text-align: center;
-  font-weight: 600;
-  font-size: 18px;
-}
-.input-labels {
-  display: flex;
-  flex-direction: column;
-  padding: 3px 0;
-}
-.form-buttons {
-  display: flex;
-}
-
-.btn-select {
-  color: #ffff;
-  box-shadow: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  padding: 8px;
-  justify-content: center;
-  width: 150px;
-  font-weight: 600;
-  border: 1px solid #cbcbcb;
-  font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  background-color: #dddddd88;
-  margin: 15px 0;
-  font-size: 12px;
-  width: 100%;
-  color: #525252;
 }

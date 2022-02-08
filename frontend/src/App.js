@@ -5,6 +5,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 import { shop } from './reducers/shop'
 import { cart } from './reducers/cart'
+import { user } from "./reducers/user"
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -16,13 +17,14 @@ import CheckoutScreen from './screens/CheckoutScreen'
 import PayScreen from './screens/PayScreen'
 import ContactScreen from './screens/ContactScreen'
 import UploadScreen from './screens/UploadScreen'
-
+import UserScreen from "./screens/UserScreen"
 
 
 ////////////////
 const reducer = combineReducers({
   shop: shop.reducer,
   cart: cart.reducer,
+  user: user.reducer,
 })
 
 const store = configureStore({ reducer })
@@ -42,6 +44,7 @@ const App = () => {
               <Route path="/pay" element={<PayScreen />} />
               <Route path="/contact" element={<ContactScreen />} />
               <Route path="/upload" element={<UploadScreen />} />
+              <Route path="/signup" element={<UserScreen />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           <Footer />

@@ -37,7 +37,7 @@ const ProductScreen = () => {
     }
 
     const addToCart = () => {  
-        const productExist = inCart.find((item) => item._id === product._id)
+        const productExist = inCart.find((item) => item._id === product.response._id)
         
         if (productExist){
             const sumQuantity = parseInt(quantity)+parseInt(productExist.quantity)
@@ -47,11 +47,11 @@ const ProductScreen = () => {
                 setQuantityCart(`${productExist.quantity}/${productExist.nrStock}`)
                 dispatch(cart.actions.setModalOn(true))
             } else {
-                dispatch(cart.actions.addItem({...product, quantity}))
+                dispatch(cart.actions.addItem({...product.response, quantity}))
                 navigate('/cart')
             } 
         } else {
-            dispatch(cart.actions.addItem({...product, quantity}))
+            dispatch(cart.actions.addItem({...product.response, quantity}))
             navigate('/cart')
         }
     }
@@ -66,20 +66,20 @@ const ProductScreen = () => {
                 <Link to="/" className="link-button">Back</Link>
                 <div className="row top"> 
                     <div className="column-2">  
-                        <img className="large" src={product.image} alt={product.name} /> 
+                        <img className="large" src={product.response.image} alt={product.response.name} /> 
                     </div>
                     <div className="column-1">
                         <ul>
                             <li>
-                                <h1>{product.name}</h1>
-                                <p>{product.title}</p>
-                                <p>Label: {product.brand}</p>
+                                <h1>{product.response.name}</h1>
+                                <p>{product.response.title}</p>
+                                <p>Label: {product.response.brand}</p>
                             </li>
                             <li>
-                                <Rating rating={product.rating} nrRating={product.nrRating} />
+                                <Rating rating={product.response.rating} nrRating={product.response.nrRating} />
                             </li>
-                            <li>Price: {product.price} SEK</li>
-                            <li>Description:<p>{product.description}</p></li>
+                            <li>Price: {product.response.price} SEK</li>
+                            <li>Description:<p>{product.response.description}</p></li>
                         </ul>
                     </div>
                     <div className="column-1">
@@ -88,20 +88,20 @@ const ProductScreen = () => {
                                 <li>
                                     <div className="row">
                                         <div>Price</div>
-                                        <div className="price">{product.price} SEK</div>
+                                        <div className="price">{product.response.price} SEK</div>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="row">
                                         <div>Status</div>
-                                        {product.nrStock > 0 ? (
-                                            <span className="success">{product.nrStock} x In Stock</span>
+                                        {product.response.nrStock > 0 ? (
+                                            <span className="success">{product.response.nrStock} x In Stock</span>
                                         ) : ( 
                                             <span className="error">Not In Stock</span>
                                         )}
                                     </div>
                                 </li>
-                                {product.nrStock > 0 &&(
+                                {product.response.nrStock > 0 &&(
                                     <>
                                         <li>
                                             <div className="row">
@@ -111,7 +111,7 @@ const ProductScreen = () => {
                                                         value={quantity} 
                                                         onChange={(event) => setQuantity(event.target.value)} 
                                                     >
-                                                    {[...Array(product.nrStock).keys()].map(
+                                                    {[...Array(product.response.nrStock).keys()].map(
                                                         (x) => (
                                                             <option key={x + 1} value={x + 1}>
                                                                 {x + 1}

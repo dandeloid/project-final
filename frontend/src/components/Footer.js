@@ -1,8 +1,16 @@
-import React from 'react' 
+import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className="row center">Daniel & Pinar</footer>  
+        <>
+            <footer>
+{/*                 <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + 'assets/Torn2.png'})`,
+                    width:'auto'
+                    }}>
+                </div>  */}
+                Daniel & Pinar
+            </footer>
+        </>
     )
 }
 

@@ -34,8 +34,7 @@ export const shop = createSlice({
 
 // Full products (/genre?genre=pop)
 export const showShop = () => {
-	return (dispatch) => {
-		
+	return (dispatch) => {		
 		const options = {
 			method: "GET",
 			headers: {
@@ -54,15 +53,13 @@ export const showShop = () => {
 					dispatch(shop.actions.setError(data))
 					dispatch(shop.actions.setLoading(false))
 				}
-			})
-			
-	};
-};
+			})			
+	}
+}
 
 //Single product
 export const showProduct = (id) => {
-	return (dispatch) => {
-		
+	return (dispatch) => {		
 		const options = {
 			method: "GET",
 			headers: {
@@ -81,8 +78,7 @@ export const showProduct = (id) => {
 					dispatch(shop.actions.setError(data))
 					dispatch(shop.actions.setLoading(false))
 				}
-			})
-			
-	};
-};
+			})		
+	}
+}
 

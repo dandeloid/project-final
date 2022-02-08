@@ -48,26 +48,26 @@ const HomeScreen = () => {
         <main>
           <Modal title="Hello!" text="Welcome to the Vinyl Shop"/>
           <div className="genre-container">
-            <button type="image" onClick={() => handleInput("")}>
-              <img src="/assets/all.png" height="100" width="100" alt="vinyl cover" />
+            <div className="genre-button" onClick={() => handleInput("")}>
+              {/* <img src="/assets/all.png" className="small" alt="vinyl cover" /> */}
               <p> GET'EM ALL</p>
-            </button>
-            <button type="image" onClick={() => handleInput("genre/?genre=pop")}>
-              <img src="/assets/pop.png" height="100" width="100" alt="vinyl cover" />
+            </div>
+            <div className="genre-button" onClick={() => handleInput("genre/?genre=pop")}>
+              {/* <img src="/assets/pop.png" className="small" alt="vinyl cover" /> */}
               <p> POP</p>
-            </button>
-            <button type="button" onClick={() => handleInput("genre/?genre=hip")}>
-              <img src="/assets/hiphop.png" height="100" width="100" alt="vinyl cover" />
+            </div>
+            <div className="genre-button" onClick={() => handleInput("genre/?genre=hip")}>
+              {/* <img src="/assets/hiphop.png" className="small" alt="vinyl cover" /> */}
               <p> HIP HOP</p>
-            </button>
-            <button type="button" onClick={() => handleInput("genre/?genre=rock")}>
-              <img src="/assets/rock.png" height="100" width="100" alt="vinyl cover" />
+            </div>
+            <div className="genre-button" onClick={() => handleInput("genre/?genre=rock")}>
+              {/* <img src="/assets/rock.png" className="small" alt="vinyl cover" /> */}
               <p> ROCK</p>
-            </button>
-            <button type="button" onClick={() => handleInput("genre/?genre=electronic")}>
-              <img src="/assets/electronic.png" height="100" width="100" alt="vinyl cover" />
+            </div>
+            <div className="genre-button" onClick={() => handleInput("genre/?genre=electronic")}>
+              {/* <img src="/assets/electronic.png" className="small" alt="vinyl cover" /> */}
               <p> ELECTRONIC</p>
-            </button>
+            </div>
           </div>
 
           {search === "" && (

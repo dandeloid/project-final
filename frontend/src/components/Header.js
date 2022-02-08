@@ -21,7 +21,10 @@ const Header = () => {
     return (
         <header className="row">
             <div>
-                <Link to="/" className="brand" onClick={() => clearSearch()}>The Vinyl Shop</Link>
+                <span>
+                {/* <img className="small" src="/vinylicon.svg" alt="vinyl" />  */}
+                <Link to="/" className="brand" onClick={() => clearSearch()}>Vinyl Cakes</Link>
+                </span>
             </div>
             <SearchBar/> 
             <div>
