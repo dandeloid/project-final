@@ -55,15 +55,18 @@ const UploadScreen = () => {
     formData.append("title", title.title)
     formData.append("genre", genre.genre)
     formData.append("price", price.price)
-    // formData.append("released", released.released)
+    formData.append("released", released.released)
     // formData.append("nrStock", nrStock.nrStock)
     // formData.append("brand", brand.brand)
     // formData.append("rating", rating.rating)
     // formData.append("nrRating", nrRating.nrRating)
     //  formData.append("about", about.about)
 
-    fetch("https://vinylshop-api.herokuapp.com/api/products", {
+    fetch(`${BASE_URL}api/products`, {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+    },
       body: formData,
     })
       .then((res) => res.json())
