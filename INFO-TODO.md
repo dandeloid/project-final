@@ -54,6 +54,8 @@
 - npm install cloudinary dotenv multer multer-storage-cloudinary
 - npm install express-list-endpoints
 - .env created for cloudinary secrets
+- in netlify.toml: changed 'command = "npm rund build"' to 'command = "CI= npm run build"'
+- public: added redirects file
 -
 
 # TO THINK ABOUT

@@ -50,7 +50,6 @@ const File = mongoose.model("File", {
   },
   nrStock: {
     type: Number,
-    require: true,
   },
   brand: {
     type: String,
