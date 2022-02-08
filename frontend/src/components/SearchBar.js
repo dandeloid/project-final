@@ -31,6 +31,9 @@ const SearchBar = () => {
           dispatch(shop.actions.setSearch(search))
           dispatch(shop.actions.setLoading(false))
           navigate("/")
+        } else {
+          dispatch(shop.actions.setLoading(false))
+          navigate("/")
         }
       })
   }
