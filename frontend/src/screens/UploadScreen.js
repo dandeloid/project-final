@@ -65,7 +65,7 @@ const UploadScreen = () => {
     fetch(`${BASE_URL}api/products`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': null,
     },
       body: formData,
     })
