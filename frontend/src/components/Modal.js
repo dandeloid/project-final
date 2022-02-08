@@ -4,12 +4,12 @@ import styled from "styled-components"
 
 import { cart } from "../reducers/cart"
   
-  const ModalButton = styled.button`
+/*   const ModalButton = styled.button`
     padding: 10px 20px;
     display: block;
     margin: 100px auto 0;
     font-size: 18px;
-  `
+  ` */
   const ModalDiv = styled.div `
     width: 100vw;
     height: 100vh;
