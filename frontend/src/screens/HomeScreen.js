@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Product from '../components/Product'
-//import Loading from '../components/Loading' 
+import Loading from '../components/Loading' 
 
 import { shop } from "../reducers/shop"
 import { showShop } from "../reducers/shop"
@@ -13,7 +13,7 @@ const HomeScreen = () => {
     const products = useSelector((store) => store.shop.items)
     const search = useSelector((store) => store.shop.search)
     const genre = useSelector((store) => store.shop.genre)
-    //const loading = useSelector((store) => store.shop.loading)
+    const loading = useSelector((store) => store.shop.loading)
 
     const [selectedGenre, setSelectedGenre] = useState(false)
 
@@ -25,12 +25,14 @@ const HomeScreen = () => {
     }, [dispatch, search, selectedGenre])
 
     const handleInput = (props) => {
+      dispatch(shop.actions.setLoading(true))
         fetch(`${BASE_URL}api/products/${props}`)
           .then((res) => res.json())
           .then((data) => {
             setSelectedGenre(true)
             dispatch(shop.actions.setSearch(""))
-            dispatch(shop.actions.setItems(data))            
+            dispatch(shop.actions.setItems(data))
+            dispatch(shop.actions.setLoading(false))            
             if (props === "genre/?genre=pop"){
               dispatch(shop.actions.setGenre("POP"))
             } else if (props === "genre/?genre=hip") {
@@ -47,6 +49,10 @@ const HomeScreen = () => {
 
       return (
         <main>
+          {loading ? (
+            <Loading /> 
+          ) : (
+          <>
           <Modal title="Hello!" text="Welcome to the Vinyl Shop"/>
           <div className="genre-container">
             <div className="genre-button" onClick={() => handleInput("")}>
@@ -92,7 +98,8 @@ const HomeScreen = () => {
               <Product key={product._id} product={product} />
             ))}
           </section>
-
+          </>
+          )}
         </main>
       )
     }

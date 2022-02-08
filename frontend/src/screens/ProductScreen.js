@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Rating from '../components/Rating'
 import Loading from '../components/Loading'
@@ -8,7 +9,7 @@ import Modal from '../components/Modal'
 import { showProduct } from "../reducers/shop"
 import { cart } from '../reducers/cart'
 //import { shop } from "../reducers/shop"
-import { useSelector, useDispatch } from 'react-redux'
+
 
 const ProductScreen = () => {
     const { id } = useParams()
@@ -42,8 +43,7 @@ const ProductScreen = () => {
         if (productExist){
             const sumQuantity = parseInt(quantity)+parseInt(productExist.quantity)
                     
-            if (sumQuantity > productExist.nrStock){
-                //alert(`Sry not enough in stock :( You have ${productExist.quantity}/${productExist.nrStock} in cart.`)  
+            if (sumQuantity > productExist.nrStock){  
                 setQuantityCart(`${productExist.quantity}/${productExist.nrStock}`)
                 dispatch(cart.actions.setModalOn(true))
             } else {

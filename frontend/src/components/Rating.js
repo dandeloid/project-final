@@ -1,5 +1,4 @@
 import React from 'react'
-// import data from '../data' 
 
 const Rating = (props) => {
     const {rating, nrRating} = props

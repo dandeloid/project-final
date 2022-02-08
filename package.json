@@ -5,4 +5,3 @@
     "postinstall": "npm install --prefix backend"
   }
 }
-
