@@ -160,8 +160,8 @@ app.post("/signup", async (req, res) => {
   try {
     const salt = bcrypt.genSaltSync()
 
-    if (password.length < 5) {
-      throw { message: "Password must be at least 5 character long" }
+    if (password.length < 4) {
+      throw { message: "Password must be at least 4 character long" }
     }
 
     const newUser = await new User({
@@ -220,6 +220,7 @@ app.post("/signin", async (req, res) => {
           email: user.email,
           accessToken: user.accessToken,
         },
+        success: true,
       })
       console.log(user.email)
     } else {

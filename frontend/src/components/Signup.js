@@ -4,10 +4,6 @@ import { useNavigate } from "react-router-dom"
 import { API_LOGIN_URL } from "../utils/urls"
 import { user } from "../reducers/user"
 
-//when signup it directs to the upload page
-// but signin does not work in the same way
-
-//after refreshing the page user sets logged out?
 const Signup = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -39,8 +35,8 @@ const Signup = () => {
     fetch(API_LOGIN_URL(mode), options)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if (data.success) {
+        console.log("TEST", data)
+        if (data) {
           batch(() => {
             dispatch(user.actions.setUserId(data.response.userId))
             dispatch(user.actions.setEmail(data.response.email))

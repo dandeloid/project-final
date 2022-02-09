@@ -25,6 +25,7 @@ const UploadScreen = () => {
   const [released, setReleased] = useState("")
   const [nrStock, setNrStock] = useState("")
   const [brand, setBrand] = useState("")
+  const [rating, setRating] = useState("")
   const [selectedFile, setSelectedFile] = useState("")
   const [isFilePicked, setIsFilePicked] = useState(false)
 
@@ -67,6 +68,10 @@ const UploadScreen = () => {
     e.preventDefault()
   }
 
+  const ratingHandler = (e) => {
+    setRating(e.target.value)
+    e.preventDefault()
+  }
   const handleSubmission = (e) => {
     e.preventDefault()
     const formData = new FormData()
@@ -78,7 +83,7 @@ const UploadScreen = () => {
     formData.append("released", released)
     formData.append("nrStock", nrStock)
     formData.append("brand", brand) // +++++++++++++
-    // formData.append("rating", rating.rating)
+    formData.append("rating", rating)
     // formData.append("nrRating", nrRating.nrRating) -----
     //  formData.append("about", about.about) ------
 
@@ -152,6 +157,9 @@ const UploadScreen = () => {
 
                 <label htmlFor="nrStock">Number of stock </label>
                 <input type="number" name="nrStock" onChange={stockHandler} />
+
+                <label htmlFor="rating">Rating </label>
+                <input type="number" name="rating" onChange={ratingHandler} />
 
                 <label htmlFor="file-name">
                   JPG, JPEG or PNG file size no more then 10MB
