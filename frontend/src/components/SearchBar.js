@@ -44,12 +44,12 @@ const SearchBar = () => {
         <Loading />
         ) : (
         <>
-          <div>
+          <div className="search-bar">
               <label htmlFor="searchByArtist">
                 <input
                   id="searchByArtist"
                   type="text"
-                  placeholder="Search by artist"
+                  placeholder=""
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   onKeyDown={(e) => checkKey(e)}
@@ -64,3 +64,5 @@ const SearchBar = () => {
 }
 
 export default SearchBar
+
+

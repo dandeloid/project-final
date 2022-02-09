@@ -19,16 +19,14 @@ const Header = () => {
 
   return (
     <header className="row">
-      <div>
-        <span>
-          {/* <img className="small" src="/vinylicon.svg" alt="vinyl" />  */}
+      <div className="brand-logo">
+{/*           <img className="logo-image" src="/vinylicon.svg" alt="vinyl" /> */}
           <Link to="/" className="brand" onClick={() => clearSearch()}>
             Vinyl Cakes
           </Link>
-        </span>
       </div>
       <SearchBar />
-      <div>
+      <div className="nav-icons">
         <span className="in-cart"> {cart.length} </span>
         <Link to="/Cart">
           <span>
@@ -37,7 +35,6 @@ const Header = () => {
         </Link>
 
         <Link to="/Signup">
-          {/* Sign in */}
           <span>
             <i className={"fa fa-user fa-lg"} />
           </span>
@@ -47,7 +44,6 @@ const Header = () => {
           <span>
             <i className={"fa fa-phone fa-lg"} />
           </span>
-          {/* Contact */}
         </Link>
       </div>
     </header>

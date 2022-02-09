@@ -8,10 +8,12 @@ const PayScreen = () => {
     
     return (
         <main>
-            <Link to="/checkout" className="link-button">Back to Checkout</Link>
+            <div className="screen-nav">
+                <Link to="/checkout" className="link-button">Back to Checkout</Link>
+            </div>
             <div className="row center">
                 <ul>
-                    <h1>Thanks you for shopping at the Vinyl Shop!</h1>
+                    <h1>Thanks you for shopping at Vinyl Cakes!</h1>
                     <img src="/assets/cat-gato.gif" alt="Turntable Cat" /> 
                 </ul>
             </div>

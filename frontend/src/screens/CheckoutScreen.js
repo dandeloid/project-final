@@ -9,9 +9,9 @@ const CheckoutScreen = () => {
 
     return (
         <main>
-          <Link to="/cart" className="link-button">
-            Back to Cart
-          </Link>
+          <div className="screen-nav">
+            <Link to="/Cart" className="link-button">Back to Cart</Link>
+          </div>
     
           <section className="checkout-section">
             <div className="input-div">

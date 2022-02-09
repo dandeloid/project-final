@@ -8,7 +8,14 @@ const Footer = () => {
                     width:'auto'
                     }}>
                 </div>  */}
-                Daniel & Pinar
+                <div className="footer-info">
+                    <div>
+                        Project by
+                    </div>
+                    <div>
+                        Daniel & Pinar
+                    </div>     
+                </div>
             </footer>
         </>
     )

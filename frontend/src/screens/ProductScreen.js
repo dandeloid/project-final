@@ -24,16 +24,15 @@ const ProductScreen = () => {
     useEffect(() => {
         dispatch(showProduct(id))
     }, [dispatch, id])
-
     
-    if (product.length === 0) {
+    if (product.error || product.length === 0) {
         return (
-            <div className="row center">
+            <main className="row center">
                 <ul>
                     <h1>Product Not Found!</h1>
                     <img className="medium" src="/assets/BlackEmptyCrate.jpeg" alt="Empty Crate" />
                 </ul>
-            </div>   
+            </main>   
         )
     }
 
@@ -63,27 +62,28 @@ const ProductScreen = () => {
             ) : (
                 <>
                 <Modal title="Sorry!" text={"You already have " + quantityCart + " in your cart."}/>
-                <Link to="/" className="link-button">Back</Link>
+                <div className="screen-nav">
+                    <Link to="/" className="link-button">Back</Link>
+                </div>
                 <div className="row top"> 
                     <div className="column-2">  
                         <img className="large" src={product.response.image} alt={product.response.name} /> 
                     </div>
-                    <div className="column-1">
-                        <ul>
-                            <li>
-                                <h1>{product.response.name}</h1>
-                                <p>{product.response.title}</p>
-                                <p>Label: {product.response.brand}</p>
-                            </li>
-                            <li>
-                                <Rating rating={product.response.rating} nrRating={product.response.nrRating} />
-                            </li>
-                            <li>Price: {product.response.price} SEK</li>
-                            <li>Description:<p>{product.response.description}</p></li>
-                        </ul>
+                    <div className="artist-card-info">
+                            <ul>
+                                <li>
+                                    <h1>{product.response.name}</h1>
+                                    <h2>{product.response.title}</h2>
+                                    <p>Label: {product.response.brand}</p>
+                                </li>
+                                <li>
+                                    <Rating rating={product.response.rating} nrRating={product.response.nrRating} />
+                                </li>
+                                <li>Price: {product.response.price} SEK</li>
+                            </ul>
                     </div>
                     <div className="column-1">
-                        <div className="card card-body">
+                        <div className="product-card-info">
                             <ul>
                                 <li>
                                     <div className="row">

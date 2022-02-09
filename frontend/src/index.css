@@ -22,17 +22,19 @@ body {
     "main"
     "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 14rem 1fr 8rem;
+  grid-template-rows: 21rem 1fr 8rem;
   height: 100%;
 }
 header {
   grid-area: header;
   background-color: black;
-  height: 13rem;
+  height: 21rem;
 }
 main {
   grid-area: main;
-  /* padding: 1rem; */
+  padding-top: 1rem;
+  background-image: url("./bg-crisp.png");
+  background-repeat: repeat;
 }
 footer {
   grid-area: footer;
@@ -61,7 +63,7 @@ a {
   color: white;
 }
 a:hover {
-  color: lightblue;
+  color: red;
 }
 ul {
   padding: 0;
@@ -91,6 +93,7 @@ button.block {
   width: 100%;
 }
 .link-button {
+  background-color: white;
   color: black;
   border: 1px solid black;
   padding: 1rem;
@@ -112,6 +115,7 @@ a.brand {
   font-size: 6rem;
   font-weight: bold;
   font-family: "Great Vibes", cursive;
+  margin: 10px;
 }
 .row.center {
   justify-content: center;
@@ -133,9 +137,9 @@ a.brand {
 }
 
 /* IMAGES */
-/* img {
-  margin: 1rem;
-} */
+img.x-small {
+  max-width: 50px;
+}
 img.small {
   max-width: 100px;
 }
@@ -143,7 +147,7 @@ img.medium {
   max-width: 200px;
 }
 img.large {
-  max-width: 500px;
+  max-width: 96%;
   margin: 1rem;
 }
 
@@ -161,6 +165,19 @@ img.large {
 }
 .card-body > * {
   margin-bottom: 0.5rem;
+}
+.artist-card-info {
+  background-color: white;
+  flex: 1 1 25rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.product-card-info {
+  border: 0.1rem black solid;
+  background-color: black;
+  margin: 1rem;
+  padding: 1rem;
+  color: white;
 }
 .card-text {
   word-wrap: break-word;
@@ -328,4 +345,73 @@ select {
 .separated-inputs {
   display: flex;
   margin-top: 10px;
+}
+
+/* New */
+
+/* HEADER */
+.search-bar {
+  max-width: 300px;
+  border: 1px solid red;
+  margin: 0 10px 0 10px;
+}
+.nav-icons {
+  margin: 0 10px 0 10px;
+  border: 1px solid red;
+}
+.brand-logo {
+  margin: 0 10px 0 10px;
+  display: flex;
+  border: 1px solid red;
+  align-items: baseline;
+}
+.logo-image {
+  max-width: 80px;
+}
+
+/* CART */
+.screen-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.added-cart {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.in-cart-products {
+  margin: 0 10px 0 10px;
+  padding: 5px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+.in-cart-products:nth-child(odd) {
+  background: lightcyan;
+}
+.remove-all-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.remove-all-button {
+  margin: 10px;
+}
+
+/* FOOTER */
+.footer-info {
+  margin-top: 2rem;
+  text-align: center;
+}
+/* CONTACT */
+.contact-container {
+  background-color: white;
+  padding: 7rem;
+}
+.email {
+  color: black;
 }

@@ -88,7 +88,7 @@ const HomeScreen = () => {
           {search.length > 0 && (
             <div className="genre-header"> 
               <h1>
-                SEARCH: {search}
+                Searched for: {search}
               </h1>
             </div>
           )}
