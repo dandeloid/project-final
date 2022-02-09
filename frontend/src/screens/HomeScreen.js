@@ -5,7 +5,6 @@ import Loading from '../components/Loading'
 import { shop } from "../reducers/shop"
 import { showShop } from "../reducers/shop"
 import { useSelector, useDispatch } from "react-redux"
-import Modal from '../components/Modal'
 import { BASE_URL } from "../utils/urls"
 
 const HomeScreen = () => {
@@ -53,7 +52,6 @@ const HomeScreen = () => {
             <Loading /> 
           ) : (
           <>
-          <Modal title="Hello!" text="Welcome to the Vinyl Shop"/>
           <div className="genre-container">
             <div className="genre-button" onClick={() => handleInput("")}>
               {/* <img src="/assets/all.png" className="small" alt="vinyl cover" /> */}

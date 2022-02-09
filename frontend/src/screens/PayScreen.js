@@ -13,7 +13,7 @@ const PayScreen = () => {
             </div>
             <div className="row center">
                 <ul>
-                    <h1>Thanks you for shopping at Vinyl Cakes!</h1>
+                    <h1 className="style-text">Thanks you for shopping at Vinyl Cakes!</h1>
                     <img src="/assets/cat-gato.gif" alt="Turntable Cat" /> 
                 </ul>
             </div>

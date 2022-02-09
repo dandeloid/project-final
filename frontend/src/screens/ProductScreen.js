@@ -28,10 +28,10 @@ const ProductScreen = () => {
     if (product.error || product.length === 0) {
         return (
             <main className="row center">
-                <ul>
-                    <h1>Product Not Found!</h1>
-                    <img className="medium" src="/assets/BlackEmptyCrate.jpeg" alt="Empty Crate" />
-                </ul>
+                <div className="center-mid">
+                    <h1 className="style-text">Product Not Found!</h1>
+                    <img className="medium circle" src="/assets/BlackEmptyCrate.jpeg" alt="Empty Crate" />
+                </div>
             </main>   
         )
     }
@@ -72,7 +72,7 @@ const ProductScreen = () => {
                     <div className="artist-card-info">
                             <ul>
                                 <li>
-                                    <h1>{product.response.name}</h1>
+                                    <h1 className="style-text">{product.response.name}</h1>
                                     <h2>{product.response.title}</h2>
                                     <p>Label: {product.response.brand}</p>
                                 </li>

@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { BASE_URL } from "../utils/urls"
 
 import { shop } from '../reducers/shop'
+import { cart } from '../reducers/cart'
 import Loading from '../components/Loading'
+
+import Modal from '../components/Modal'
 
 
 const SearchBar = () => {
@@ -26,17 +29,21 @@ const SearchBar = () => {
     fetch(`${BASE_URL}api/products/search?q=${search}`)
       .then((response) => response.json())
       .then((data) => {
-        if (search.length > 0){
+        if (search.length > 0 && data.success === !false){
+          console.log("blob", data)
           dispatch(shop.actions.setItems(data.response))
           dispatch(shop.actions.setSearch(search))
           dispatch(shop.actions.setLoading(false))
           navigate("/")
         } else {
           dispatch(shop.actions.setLoading(false))
-          navigate("/")
+          dispatch(cart.actions.setModalOn(true))
+          //navigate("/")
         }
       })
   }
+
+ 
 
   return (  
     <>
@@ -44,6 +51,7 @@ const SearchBar = () => {
         <Loading />
         ) : (
         <>
+         <Modal title="Sorry!" text={`Could not find "${search}"`} />
           <div className="search-bar">
               <label htmlFor="searchByArtist">
                 <input

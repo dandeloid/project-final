@@ -26,10 +26,10 @@ const CartScreen = () => {
     if (inCart.length === 0) {
         return (
             <main className="row center">
-                <ul>
-                    <h1>Empty cart, add items to cart.</h1>
-                    <img className="medium" src="/assets/BlackEmptyCrate.jpeg" alt="Empty Crate" />
-                </ul>
+                <div className="center-mid">
+                    <h1 className="style-text">Empty cart, add items to cart!</h1>
+                    <img className="medium circle" src="/assets/BlackEmptyCrate.jpeg" alt="Empty Crate" />
+                </div>
             </main>   
         )
     }
