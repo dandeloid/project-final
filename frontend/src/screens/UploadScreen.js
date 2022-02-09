@@ -83,7 +83,7 @@ const UploadScreen = () => {
     formData.append("released", released)
     formData.append("nrStock", nrStock)
     formData.append("brand", brand) // +++++++++++++
-    formData.append("rating", rating.rating)
+    formData.append("rating", rating)
     // formData.append("nrRating", nrRating.nrRating) -----
     //  formData.append("about", about.about) ------
 
