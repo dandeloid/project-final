@@ -320,3 +320,12 @@ input[type="file"] {
   width: 100%;
   color: #525252;
 }
+
+select {
+  padding: 10px;
+  border: 1px solid #cbcbcb;
+}
+.separated-inputs {
+  display: flex;
+  margin-top: 10px;
+}
