@@ -47,9 +47,6 @@ const UploadScreen = () => {
     setGenre(e.target.value)
     e.preventDefault()
   }
-  // const genreHandler = (e) => {
-  //   setGenre(e.target.value)
-  // }
 
   const priceHandler = (e) => {
     setPrice(e.target.value)
@@ -112,12 +109,22 @@ const UploadScreen = () => {
   return (
     <>
       <div className="container">
-        <Link to="/" className="link-button">
-          Back to Store
-        </Link>
-        <p className="title-text">Sell your vinyl!</p>
+        <div className="screen-nav">
+          <Link to="/" className="link-button">
+            Back to Store
+          </Link>
+          <Logout />
+        </div>
+
         <div className="form-wrapper">
-          <form method="POST" onSubmit={handleSubmission}>
+          <form
+            className="upload-form"
+            method="POST"
+            onSubmit={handleSubmission}
+          >
+            <p className="title-text">
+              Sell your vinyls! <i class="fa-solid fa-compact-disc fa-lg "></i>
+            </p>
             <div className="input-field">
               <div className="input-labels">
                 <label htmlFor="name">Artist Name</label>
@@ -138,28 +145,27 @@ const UploadScreen = () => {
                   <option value="electronic">Electronic</option>
                 </select>
 
-                <div className="separated-inputs">
-                  <div>
-                    <label htmlFor="released">Release date</label>
-                    <input
-                      type="text"
-                      name="released"
-                      onChange={releasedHandler}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="brand">Label</label>
-                    <input type="text" name="label" onChange={brandHandler} />
-                  </div>
-                </div>
+                <label htmlFor="released">Release date</label>
+                <input type="text" name="released" onChange={releasedHandler} />
+
+                <label htmlFor="brand">Label</label>
+                <input type="text" name="label" onChange={brandHandler} />
+
                 <label htmlFor="price">Price</label>
                 <input type="number" name="price" onChange={priceHandler} />
 
                 <label htmlFor="nrStock">Number of stock </label>
                 <input type="number" name="nrStock" onChange={stockHandler} />
 
-                <label htmlFor="rating">Rating </label>
-                <input type="number" name="rating" onChange={ratingHandler} />
+                <label htmlFor="rating">Rating</label>
+                <select type="number" value={rating} onChange={ratingHandler}>
+                  <option value="">-</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
 
                 <label htmlFor="file-name">
                   JPG, JPEG or PNG file size no more then 10MB
@@ -173,9 +179,8 @@ const UploadScreen = () => {
                   onChange={changeHandler}
                 />
 
-                <button className="btn-upload-row">UPLOAD VINYL</button>
+                <button className="upload-btn">UPLOAD VINYL</button>
               </div>
-              <Logout />
             </div>
           </form>
         </div>

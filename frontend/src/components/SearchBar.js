@@ -1,19 +1,18 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux"
 import { BASE_URL } from "../utils/urls"
 
-import { shop } from '../reducers/shop'
-import { cart } from '../reducers/cart'
-import Loading from '../components/Loading'
+import { shop } from "../reducers/shop"
+import { cart } from "../reducers/cart"
+import Loading from "../components/Loading"
 
-import Modal from '../components/Modal'
-
+import Modal from "../components/Modal"
 
 const SearchBar = () => {
   const loading = useSelector((store) => store.shop.loading)
   const [search, setSearch] = useState("")
-  
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -29,7 +28,7 @@ const SearchBar = () => {
     fetch(`${BASE_URL}api/products/search?q=${search}`)
       .then((response) => response.json())
       .then((data) => {
-        if (search.length > 0 && data.success === !false){
+        if (search.length > 0 && data.success === !false) {
           console.log("blob", data)
           dispatch(shop.actions.setItems(data.response))
           dispatch(shop.actions.setSearch(search))
@@ -43,27 +42,27 @@ const SearchBar = () => {
       })
   }
 
- 
-
-  return (  
+  return (
     <>
       {loading ? (
         <Loading />
-        ) : (
+      ) : (
         <>
-         <Modal title="Sorry!" text={`Could not find "${search}"`} />
+          <Modal title="Sorry!" text={`Could not find "${search}"`} />
           <div className="search-bar">
-              <label htmlFor="searchByArtist">
-                <input
-                  id="searchByArtist"
-                  type="text"
-                  placeholder=""
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  onKeyDown={(e) => checkKey(e)}
-                />
-              </label>
-              <button onClick={() => onSearchHandle()}>SEARCH</button>
+            <label htmlFor="search">
+              <input
+                id="search-input"
+                type="text"
+                placeholder=""
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => checkKey(e)}
+              />
+            </label>
+            <button className="search-btn" onClick={() => onSearchHandle()}>
+              SEARCH
+            </button>
           </div>
         </>
       )}
@@ -72,5 +71,3 @@ const SearchBar = () => {
 }
 
 export default SearchBar
-
-

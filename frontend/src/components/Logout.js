@@ -26,13 +26,14 @@ const Logout = () => {
 
   return (
     <div>
-      <button
+      <a
+        className="link-button"
         onClick={() => {
           dispatch(user.actions.logout())
         }}
       >
         Logout
-      </button>
+      </a>
     </div>
   )
 }

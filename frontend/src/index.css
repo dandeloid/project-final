@@ -77,7 +77,7 @@ ul {
 li {
   margin-top: 1rem;
 }
-button {
+/* button {
   padding: 1rem;
   border: 0.1rem black solid;
   -webkit-font-smoothing: antialiased;
@@ -86,7 +86,8 @@ button {
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
   cursor: pointer;
-}
+  height: 52px;
+} */
 button:hover {
   border: 0.1rem red solid;
 }
@@ -223,20 +224,40 @@ img.circle {
 .genre-container {
   display: flex;
   justify-content: center;
+  /* background-image: url(https://images.pexels.com/photos/114820/pexels-photo-114820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260); */
+
+  background-image: url(https://images.pexels.com/photos/164853/pexels-photo-164853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  /* background-image: url(https://images.pexels.com/photos/96857/pexels-photo-96857.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260); */
+  height: 400px;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: cover;
+  opacity: 90%;
+  flex-direction: column;
 }
 .genre-button {
   max-width: 10rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
-  border: 0.1rem black solid;
+  border: 0.2rem black solid;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.4rem;
   font-family: "Concert One", cursive;
   background-color: white;
   cursor: pointer;
+
+  width: 67px;
+  text-align: center;
 }
 .genre-button:hover {
   border: 0.1rem red solid;
+  background-color: red;
+  transition: 0.5s;
+}
+
+.genre-block {
+  display: flex;
 }
 
 /* CART STUFF */
@@ -258,57 +279,50 @@ img.circle {
   display: flex;
   flex-direction: column;
   padding: 3px 0;
-  width: 320px;
+  /* width: 320px; */
+  width: 100%;
+  margin: 0 auto;
 }
-.input-fields input {
+/* .input-fields input {
   padding: 8px;
-  border: 1px solid #cbcbcb;
+  border: 1px solid black;
   display: block;
   border-radius: 5px;
   margin: 5px 0;
   font-size: 12px;
-}
+  /* width: 100%; */
 
-input#address {
+/* input#address {
   padding-bottom: 40px;
 }
-.input-div {
-  padding-left: 30px;
-}
+
 .checkout-title {
   margin-top: 30px;
-}
+} */
 
-.pay-button {
-  margin: 20px auto;
-  width: 50%;
-  min-width: 320px;
-  border-radius: 5px;
-  background-color: antiquewhite;
-}
 .payment-details {
   font-size: 12px;
-  margin-bottom: 30px;
+  margin: 5px 0 30px;
+  text-align: center;
 }
 .newsletter {
   margin: 5px 0;
 }
 
 /* Upload Page  */
-form {
+/* form {
   font-family: "Raleway", sans-serif;
-  background-color: #d2fc29;
-  padding: 10px;
-  width: 70%;
-  max-width: 500px;
+  border: 1px solid black;
+  padding: 30px;
+  width: 60%;
+  max-width: 450px;
   margin: 10px auto 30px;
-  color: #031a19;
-  box-shadow: 3px 4px 3px 1px rgb(218 218 218 / 48%);
   border-radius: 3px;
-}
+} */
 input {
   padding: 10px;
-  border: 1px solid #cbcbcb;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 input[type="file"] {
   padding: 7px;
@@ -330,11 +344,15 @@ input[type="file"] {
   display: flex;
   flex-direction: column;
   padding: 3px 0;
+  margin: 6px 0;
 }
 .form-buttons {
   display: flex;
 }
 
+label {
+  margin: 8px 0;
+}
 .btn-select {
   color: #ffff;
   box-shadow: none;
@@ -356,20 +374,18 @@ input[type="file"] {
 
 select {
   padding: 10px;
-  border: 1px solid #cbcbcb;
+  border: 1px solid #000000;
 }
 .separated-inputs {
   display: flex;
   margin-top: 10px;
 }
 
-/* New */
-
 /* HEADER */
 .search-bar {
-  max-width: 300px;
+  /* max-width: 300px; */
   /* border: 1px solid red; */
-  margin: 0 10px 0 10px;
+  margin: 10px 10px 0 10px;
 }
 .nav-icons {
   margin: 0 10px 0 10px;
@@ -435,4 +451,125 @@ select {
 .style-text {
   font-family: "Concert One", cursive;
   font-size: 2.4rem;
+}
+/* input {
+  padding: 10px;
+  border: 1px solid black;
+  width: 233px;
+  height: 30px;
+  background-color: #f44336;
+} */
+
+.signup-container {
+  /* width: 40%; */
+  min-width: 250px;
+  max-width: 400px;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.sign-form-input {
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid #000000;
+  margin: 8px 0;
+}
+
+.sign-btn,
+.upload-btn,
+.pay-btn {
+  padding: 10px;
+  border: 0.1rem black solid;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+  background-color: white;
+  cursor: pointer;
+  height: auto;
+  width: 47%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sign-btn:hover,
+.upload-btn:hover,
+.pay-btn:hover {
+  color: #e8e8e8;
+  font-weight: bold;
+  background-color: rgb(0, 0, 0);
+  border: 0.1rem black solid;
+}
+
+.sign-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+.sign-form {
+  padding: 30px;
+  border: 1px solid black;
+  height: 400px;
+}
+
+.sign-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-create {
+  margin: 0;
+}
+.sign-have {
+  margin: 0 0 30px 0;
+  color: grey;
+}
+
+/* upload  */
+
+.form-wraper {
+  width: 600px;
+  min-width: 300px;
+  margin: auto;
+  padding: 30px;
+}
+
+.upload-form,
+.payment-form {
+  padding: 30px;
+  border: 1px solid black;
+  max-width: 450px;
+  margin: 10px auto 30px;
+  background-color: #ffffff;
+}
+
+.upload-btn,
+.pay-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+#search-input {
+  width: 200px;
+  border-radius: unset;
+}
+
+.search-btn {
+  padding: 1rem;
+  border: 0.1rem black solid;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* .input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+input#card {
+  width: 95%;
 }

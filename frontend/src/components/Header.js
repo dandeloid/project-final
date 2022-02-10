@@ -20,12 +20,12 @@ const Header = () => {
   return (
     <header className="row">
       <div className="brand-logo">
-{/*           <img className="logo-image" src="/vinylicon.svg" alt="vinyl" /> */}
-          <Link to="/" className="brand" onClick={() => clearSearch()}>
-            Vinyl Cakes
-          </Link>
+        {/*           <img className="logo-image" src="/vinylicon.svg" alt="vinyl" /> */}
+        <Link to="/" className="brand" onClick={() => clearSearch()}>
+          Vinyl Cakes
+        </Link>
       </div>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className="nav-icons">
         <span className="in-cart"> {cart.length} </span>
         <Link to="/Cart">
