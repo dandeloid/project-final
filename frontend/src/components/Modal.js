@@ -4,12 +4,6 @@ import styled from "styled-components"
 
 import { cart } from "../reducers/cart"
   
-/*   const ModalButton = styled.button`
-    padding: 10px 20px;
-    display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
-  ` */
   const ModalDiv = styled.div `
     width: 100vw;
     height: 100vh;
@@ -50,27 +44,20 @@ import { cart } from "../reducers/cart"
   `
 
 const Modal = ({title, text}) => {
-  //const [modalOn, setModalOn] = useState(false);
-
   const dispatch = useDispatch()
   const modalOn = useSelector((store) => store.cart.modal)
 
   const toggleModal = () => {
-    //setModalOn(!modalOn);
     dispatch(cart.actions.setModalOn(false))
   };
 
   return (
     <>
-{/*       <ModalButton onClick={toggleModal}>
-        Open
-      </ModalButton> */}
-
       {modalOn && (
         <ModalDiv>
           <Overlay onClick={toggleModal} />
           <ModalContent>
-            {title && <h1>{title}</h1>}
+            {title && <h1 className="style-text">{title}</h1>}
             {text && <p>{text}</p>}
             <CloseModalButton onClick={toggleModal}>
               X

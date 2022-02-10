@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import Product from '../components/Product'
 import Loading from '../components/Loading' 
+import SearchBar from '../components/SearchBar'
 
+import { useSelector, useDispatch } from "react-redux"
+
+import { BASE_URL } from "../utils/urls"
 import { shop } from "../reducers/shop"
 import { showShop } from "../reducers/shop"
-import { useSelector, useDispatch } from "react-redux"
-import { BASE_URL } from "../utils/urls"
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -13,7 +15,6 @@ const HomeScreen = () => {
     const search = useSelector((store) => store.shop.search)
     const genre = useSelector((store) => store.shop.genre)
     const loading = useSelector((store) => store.shop.loading)
-
     const [selectedGenre, setSelectedGenre] = useState(false)
 
     useEffect(() => {
@@ -53,26 +54,36 @@ const HomeScreen = () => {
           ) : (
           <>
           <div className="genre-container">
-            <div className="genre-button" onClick={() => handleInput("")}>
-              {/* <img src="/assets/all.png" className="small" alt="vinyl cover" /> */}
-              <p> GET'EM ALL</p>
+            <div className="genre-block">
+              <div className="genre-button" onClick={() => handleInput("")}>
+                <p> GET'EM ALL</p>
+              </div>
+              <div
+                className="genre-button"
+                onClick={() => handleInput("genre/?genre=pop")}
+              >
+                <p> POP</p>
+              </div>
+              <div
+                className="genre-button"
+                onClick={() => handleInput("genre/?genre=hip")}
+              >
+                <p> HIP HOP</p>
+              </div>
+              <div
+                className="genre-button"
+                onClick={() => handleInput("genre/?genre=rock")}
+              >
+                <p> ROCK</p>
+              </div>
+              <div
+                className="genre-button"
+                onClick={() => handleInput("genre/?genre=electronic")}
+              >
+                <p> ELECTRONIC</p>
+              </div>
             </div>
-            <div className="genre-button" onClick={() => handleInput("genre/?genre=pop")}>
-              {/* <img src="/assets/pop.png" className="small" alt="vinyl cover" /> */}
-              <p> POP</p>
-            </div>
-            <div className="genre-button" onClick={() => handleInput("genre/?genre=hip")}>
-              {/* <img src="/assets/hiphop.png" className="small" alt="vinyl cover" /> */}
-              <p> HIP HOP</p>
-            </div>
-            <div className="genre-button" onClick={() => handleInput("genre/?genre=rock")}>
-              {/* <img src="/assets/rock.png" className="small" alt="vinyl cover" /> */}
-              <p> ROCK</p>
-            </div>
-            <div className="genre-button" onClick={() => handleInput("genre/?genre=electronic")}>
-              {/* <img src="/assets/electronic.png" className="small" alt="vinyl cover" /> */}
-              <p> ELECTRONIC</p>
-            </div>
+            <SearchBar />
           </div>
 
           {search === "" && (

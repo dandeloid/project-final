@@ -6,8 +6,11 @@ const ContactScreen = () => {
         <main className="row center">
             <div className="contact-container">
                 <div className="center-mid">
-                    <h1 className="style-text">Hello and welcome to Vinyl Cakes</h1>
-                    <a className="email" href="mailto:contact@vinylcakes.se">Email us at: contact@vinylcakes.se</a>
+                    <h1 className="style-text">Hello!</h1>
+                    <h1 className="style-text">Welcome to Vinyl Cakes</h1>
+                    <p>____________________________</p>
+                    <p>Email us at:</p>
+                    <a className="email" href="mailto:contact@vinylcakes.se">contact@vinylcakes.se</a>
                 </div>
             </div>
         </main>    

@@ -4,10 +4,6 @@ const Footer = () => {
     return (
         <>
             <footer>
-{/*                 <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + 'assets/Torn2.png'})`,
-                    width:'auto'
-                    }}>
-                </div>  */}
                 <div className="footer-info">
                     <div>
                         Project by

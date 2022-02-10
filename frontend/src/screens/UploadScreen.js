@@ -1,22 +1,15 @@
-import React, { useState, useEffect, useRef } from "react"
-//import Loading from '../components/Loading'
-import { useSelector, useDispatch } from "react-redux"
+import React, { useState, useRef } from "react"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { addVinyl } from "../reducers/addVinyl"
 import { BASE_URL } from "../utils/urls"
-import { Link } from "react-router-dom" // +++++++++++ back link to store
-import Logout from "../components/Logout" // +++++++++++ logout button
+import { Link } from "react-router-dom" 
+import Logout from "../components/Logout" 
 
 const UploadScreen = () => {
   const fileInput = useRef()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  // const name = useSelector((store) => store.shop.name)
-  //const title = useSelector((store) => store.shop.title)
-  // const genre = useSelector((store) => store.shop.genre)
-  // const price = useSelector((store) => store.shop.name)
-  // const released = useSelector((store) => store.shop.title)
-  // const nrStock = useSelector((store) => store.shop.genre)
 
   const [name, setName] = useState("")
   const [title, setTitle] = useState("")
@@ -26,12 +19,12 @@ const UploadScreen = () => {
   const [nrStock, setNrStock] = useState("")
   const [brand, setBrand] = useState("")
   const [rating, setRating] = useState("")
-  const [selectedFile, setSelectedFile] = useState("")
-  const [isFilePicked, setIsFilePicked] = useState(false)
+  // const [selectedFile, setSelectedFile] = useState("")
+  // const [isFilePicked, setIsFilePicked] = useState(false)
 
   const changeHandler = (e) => {
-    setSelectedFile(e.target.files[0])
-    setIsFilePicked(true)
+    // setSelectedFile(e.target.files[0])
+    // setIsFilePicked(true)
     e.preventDefault()
   }
 
@@ -47,9 +40,6 @@ const UploadScreen = () => {
     setGenre(e.target.value)
     e.preventDefault()
   }
-  // const genreHandler = (e) => {
-  //   setGenre(e.target.value)
-  // }
 
   const priceHandler = (e) => {
     setPrice(e.target.value)
@@ -82,10 +72,9 @@ const UploadScreen = () => {
     formData.append("price", price)
     formData.append("released", released)
     formData.append("nrStock", nrStock)
-    formData.append("brand", brand) // +++++++++++++
+    formData.append("brand", brand)
     formData.append("rating", rating)
-    // formData.append("nrRating", nrRating.nrRating) -----
-    //  formData.append("about", about.about) ------
+
 
     fetch(`${BASE_URL}api/products`, {
       method: "POST",
@@ -102,22 +91,30 @@ const UploadScreen = () => {
         dispatch(addVinyl.actions.setPrice(data.genre))
         dispatch(addVinyl.actions.setPrice(data.nrStock))
         dispatch(addVinyl.actions.setPrice(data.released))
-        navigate(`/product/${data._id}`) // +++++++++++++++++
-        //navigate("/")
+        navigate(`/product/${data._id}`) 
+
       })
   }
 
-  //????? navigate /product/${id}
-  // +++++++ back link to store
   return (
     <>
       <div className="container">
-        <Link to="/" className="link-button">
-          Back to Store
-        </Link>
-        <p className="title-text">Sell your vinyl!</p>
+        <div className="screen-nav">
+          <Link to="/" className="link-button">
+            Back to Store
+          </Link>
+          <Logout />
+        </div>
+
         <div className="form-wrapper">
-          <form method="POST" onSubmit={handleSubmission}>
+          <form
+            className="upload-form"
+            method="POST"
+            onSubmit={handleSubmission}
+          >
+            <p className="title-text">
+              Sell your vinyls! <i class="fa-solid fa-compact-disc fa-lg "></i>
+            </p>
             <div className="input-field">
               <div className="input-labels">
                 <label htmlFor="name">Artist Name</label>
@@ -126,8 +123,6 @@ const UploadScreen = () => {
                 <label htmlFor="title">Album Title</label>
                 <input type="text" name="genre" onChange={titleHandler} />
 
-                {/* <label htmlFor="genre">Genre</label>
-                <input type="text" name="title" onChange={genreHandler} /> */}
 
                 <label htmlFor="genre">Genre</label>
                 <select type="text" value={genre} onChange={genreHandler}>
@@ -138,28 +133,27 @@ const UploadScreen = () => {
                   <option value="electronic">Electronic</option>
                 </select>
 
-                <div className="separated-inputs">
-                  <div>
-                    <label htmlFor="released">Release date</label>
-                    <input
-                      type="text"
-                      name="released"
-                      onChange={releasedHandler}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="brand">Label</label>
-                    <input type="text" name="label" onChange={brandHandler} />
-                  </div>
-                </div>
+                <label htmlFor="released">Release date</label>
+                <input type="text" name="released" onChange={releasedHandler} />
+
+                <label htmlFor="brand">Label</label>
+                <input type="text" name="label" onChange={brandHandler} />
+
                 <label htmlFor="price">Price</label>
                 <input type="number" name="price" onChange={priceHandler} />
 
                 <label htmlFor="nrStock">Number of stock </label>
                 <input type="number" name="nrStock" onChange={stockHandler} />
 
-                <label htmlFor="rating">Rating </label>
-                <input type="number" name="rating" onChange={ratingHandler} />
+                <label htmlFor="rating">Rating</label>
+                <select type="number" value={rating} onChange={ratingHandler}>
+                  <option value="">-</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
 
                 <label htmlFor="file-name">
                   JPG, JPEG or PNG file size no more then 10MB
@@ -173,9 +167,8 @@ const UploadScreen = () => {
                   onChange={changeHandler}
                 />
 
-                <button className="btn-upload-row">UPLOAD VINYL</button>
+                <button className="upload-btn">UPLOAD VINYL</button>
               </div>
-              <Logout />
             </div>
           </form>
         </div>

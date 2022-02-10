@@ -1,8 +1,7 @@
 import React from "react"
-// import data from '../data'
 
 const Rating = (props) => {
-  const { rating, nrRating } = props
+  const { rating } = props
   return (
     <div className="rating">
       <span>
@@ -61,7 +60,6 @@ const Rating = (props) => {
         />
       </span>
       <span></span>
-      {/* <span> {nrRating} Reviews</span> */}
     </div>
   )
 }

@@ -12,10 +12,10 @@ const Product = (props) => {
         </Link>
         <div className="card-body">
           <Link to={`/product/${product._id}`}>
-            <h2 className="card-text">{product.name}</h2>
+            <h2 className="style-text">{product.name}</h2>
             <p className="card-text">{product.title}</p>
           </Link>
-          <Rating rating={product.rating} nrRating={product.nrRating} />
+          <Rating rating={product.rating} />
           {product.nrStock > 0 ? (
             <span className="success">In Stock</span>
             ) : ( 

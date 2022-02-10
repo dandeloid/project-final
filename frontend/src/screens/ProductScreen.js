@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { showProduct } from "../reducers/shop"
+import { cart } from '../reducers/cart'
+
 import Rating from '../components/Rating'
 import Loading from '../components/Loading'
 import Modal from '../components/Modal'
-
-import { showProduct } from "../reducers/shop"
-import { cart } from '../reducers/cart'
-//import { shop } from "../reducers/shop"
-
 
 const ProductScreen = () => {
     const { id } = useParams()
@@ -79,7 +77,6 @@ const ProductScreen = () => {
                                 <li>
                                     <Rating rating={product.response.rating} nrRating={product.response.nrRating} />
                                 </li>
-                                <li>Price: {product.response.price} SEK</li>
                             </ul>
                     </div>
                     <div className="column-1">

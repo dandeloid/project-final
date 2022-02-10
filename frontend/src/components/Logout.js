@@ -15,24 +15,20 @@ const Logout = () => {
     }
   }, [accessToken, navigate])
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization: accessToken,
-      },
-    }
-  })
+  // useEffect(() => {
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: accessToken,
+  //     },
+  //   }
+  // })
 
   return (
     <div>
-      <button
-        onClick={() => {
-          dispatch(user.actions.logout())
-        }}
-      >
+      <div className="link-button" onClick={() => {dispatch(user.actions.logout())}}>
         Logout
-      </button>
+      </div>
     </div>
   )
 }
