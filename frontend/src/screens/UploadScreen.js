@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { addVinyl } from "../reducers/addVinyl"
 import { BASE_URL } from "../utils/urls"
-import { Link } from "react-router-dom" 
-import Logout from "../components/Logout" 
+import { Link } from "react-router-dom"
+import Logout from "../components/Logout"
 
 const UploadScreen = () => {
   const fileInput = useRef()
@@ -19,12 +19,12 @@ const UploadScreen = () => {
   const [nrStock, setNrStock] = useState("")
   const [brand, setBrand] = useState("")
   const [rating, setRating] = useState("")
-  // const [selectedFile, setSelectedFile] = useState("")
-  // const [isFilePicked, setIsFilePicked] = useState(false)
+  const [selectedFile, setSelectedFile] = useState("")
+  const [isFilePicked, setIsFilePicked] = useState(false)
 
   const changeHandler = (e) => {
-    // setSelectedFile(e.target.files[0])
-    // setIsFilePicked(true)
+    setSelectedFile(e.target.files[0])
+    setIsFilePicked(true)
     e.preventDefault()
   }
 
@@ -75,15 +75,12 @@ const UploadScreen = () => {
     formData.append("brand", brand)
     formData.append("rating", rating)
 
-
     fetch(`${BASE_URL}api/products`, {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        console.log(data.name)
         dispatch(addVinyl.actions.setImage(data.image))
         dispatch(addVinyl.actions.setName(data.name))
         dispatch(addVinyl.actions.setTitle(data.title))
@@ -91,8 +88,7 @@ const UploadScreen = () => {
         dispatch(addVinyl.actions.setPrice(data.genre))
         dispatch(addVinyl.actions.setPrice(data.nrStock))
         dispatch(addVinyl.actions.setPrice(data.released))
-        navigate(`/product/${data._id}`) 
-
+        navigate(`/product/${data._id}`)
       })
   }
 
@@ -122,7 +118,6 @@ const UploadScreen = () => {
 
                 <label htmlFor="title">Album Title</label>
                 <input type="text" name="genre" onChange={titleHandler} />
-
 
                 <label htmlFor="genre">Genre</label>
                 <select type="text" value={genre} onChange={genreHandler}>

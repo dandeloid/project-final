@@ -42,7 +42,7 @@ const CheckoutScreen = () => {
                 required
                 id="card"
                 name="card"
-                placeholder="Card number                                                 MM/YY CVC"
+                placeholder="Card number    MM/YY CVC"
               />
             </div>
             <label htmlFor="name">Cardholder name</label>
@@ -80,8 +80,10 @@ const CheckoutScreen = () => {
                 placeholder="Postcode"
               />
             </div>
-            
-            <h4>Total <span>{sumAllPrice} SEK </span></h4>
+
+            <h4>
+              Total <span>{sumAllPrice} SEK </span>
+            </h4>
             <Link to="/pay" type="submit">
               <button className="pay-btn"> PAY {sumAllPrice} SEK </button>
             </Link>

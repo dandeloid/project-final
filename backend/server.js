@@ -4,9 +4,7 @@ import mongoose from "mongoose"
 import listEndpoints from "express-list-endpoints"
 import File from "./schemas/vinyl.js"
 import UserSchema from "./schemas/user.js"
-// import crypto from "crypto"
 import bcrypt from "bcrypt"
-
 import dotenv from "dotenv"
 import cloudinaryFramework from "cloudinary"
 import multer from "multer"
@@ -16,12 +14,11 @@ const port = process.env.PORT || 3003
 const app = express()
 dotenv.config()
 
-// Add middlewares to enable cors and json body parsing
+// Middlewares to enable cors and json body parsing
 app.use(cors())
 app.use(express.json())
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
-//const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylUpload"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
@@ -89,15 +86,29 @@ app.delete("/api/products/:id", async (req, res) => {
   }
 })
 
+app.get("/api/products/id/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const singleProduct = await File.findById(id)
+    if (singleProduct) {
+      res.status(200).json({ response: singleProduct, success: true })
+    } else {
+      res
+        .status(404)
+        .json({ response: "No vinyl found with this id", success: false })
+    }
+  } catch (error) {
+    res.status(400).json({ error: "No id", success: false })
+  }
+})
+
 // GET a list of products by querying their genre: api/products/genre?genre="genrename"
 app.get("/api/products/genre", async (req, res) => {
   const { genre } = req.query
-  console.log(genre)
   try {
     const genreData = await File.find({
       genre: { $regex: `.*${genre}.*`, $options: "$i" },
     })
-
     if (genre) {
       res.status(200).send(genreData)
     } else {
@@ -113,40 +124,21 @@ app.get("/api/products/genre", async (req, res) => {
 app.get("/api/products/search", async (req, res) => {
   try {
     const query = req.query["q"]
-    console.log("req.query", query)
-    const vinylByName = await File.find({
+    const vinylByQuery = await File.find({
       $or: [
         { name: { $regex: `.*${query}.*`, $options: "$i" } },
         { title: { $regex: `.*${query}.*`, $options: "$i" } },
         { released: { $regex: `.*${query}.*`, $options: "$i" } },
       ],
     })
-    // $options here $i is used to make the search case insensitive.
-    if (vinylByName.length > 0) {
-      res.status(200).json({ response: vinylByName, success: true })
+
+    if (vinylByQuery.length > 0) {
+      res.status(200).json({ response: vinylByQuery, success: true })
     } else {
       res.status(404).json({ response: "No results", success: false })
     }
   } catch (error) {
     return res.status(500).json({ response: error.message, success: false })
-  }
-})
-
-// https://regex101.com/
-
-app.get("/api/products/id/:id", async (req, res) => {
-  const { id } = req.params
-  try {
-    const singleProduct = await File.findById(id)
-    if (singleProduct) {
-      res.status(200).json({ response: singleProduct, success: true })
-    } else {
-      res
-        .status(404)
-        .json({ response: "No vinyl found with this id", success: false })
-    }
-  } catch (error) {
-    res.status(400).json({ error: "No id", success: false })
   }
 })
 

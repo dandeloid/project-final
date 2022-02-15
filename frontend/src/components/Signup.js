@@ -63,10 +63,10 @@ const Signup = () => {
           <div className="sign-text">
             <span>
               <i className={"fa fa-user fa-2x"} />
-            </span>{" "}
+            </span>
             <h1 className="sign-create">Create an account to sell vinyls!</h1>
             <h2 className="sign-have">
-              Already have one?{" "}
+              Already have one?
               <span>
                 Sign in. <i className="fa fa-user-alien fa-lg"></i>
               </span>
