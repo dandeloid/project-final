@@ -33,7 +33,7 @@ export const shop = createSlice({
 	},
 });
 
-// Full products (/genre?genre=pop)
+// Full products
 export const showShop = () => {
 	return (dispatch) => {		
 		const options = {

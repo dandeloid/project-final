@@ -19,12 +19,9 @@ const UploadScreen = () => {
   const [nrStock, setNrStock] = useState("")
   const [brand, setBrand] = useState("")
   const [rating, setRating] = useState("")
-  // const [selectedFile, setSelectedFile] = useState("")
-  // const [isFilePicked, setIsFilePicked] = useState(false)
+
 
   const changeHandler = (e) => {
-    // setSelectedFile(e.target.files[0])
-    // setIsFilePicked(true)
     e.preventDefault()
   }
 

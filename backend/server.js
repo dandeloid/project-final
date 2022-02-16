@@ -4,7 +4,6 @@ import mongoose from "mongoose"
 import listEndpoints from "express-list-endpoints"
 import File from "./schemas/vinyl.js"
 import UserSchema from "./schemas/user.js"
-// import crypto from "crypto"
 import bcrypt from "bcrypt"
 
 import dotenv from "dotenv"
@@ -21,7 +20,6 @@ app.use(cors())
 app.use(express.json())
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylAPI"
-//const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/vinylUpload"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
@@ -131,8 +129,6 @@ app.get("/api/products/search", async (req, res) => {
     return res.status(500).json({ response: error.message, success: false })
   }
 })
-
-// https://regex101.com/
 
 app.get("/api/products/id/:id", async (req, res) => {
   const { id } = req.params
