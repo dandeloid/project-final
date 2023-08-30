@@ -53,7 +53,7 @@ const HomeScreen = () => {
             <Loading /> 
           ) : (
           <>
-{/*           <div className="genre-container">
+          <div className="genre-container">
             <div className="genre-block">
               <div className="genre-button" onClick={() => handleInput("")}>
                 <p> GET'EM ALL</p>
@@ -84,7 +84,7 @@ const HomeScreen = () => {
               </div>
             </div>
             <SearchBar />
-          </div> */}
+          </div>
 
           {search === "" && (
             <div className="genre-header"> 
